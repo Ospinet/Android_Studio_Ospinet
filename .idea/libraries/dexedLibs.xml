@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="dexedLibs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-587a3dc1e83dad2598fcd28b9d006278.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/actionbarsherlock-706a4e335cf048c3c6cdfcc1c4d6eba7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-697e22e27bd43f93920c79613bcc1a6b.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-02f50fd8039793410bfa695528090ecd.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/library-ff65cd3cbb0e407ca4f42e80ad7c6916.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-28ab27cb1e43528b2e9a09f38e504f84.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-support-v4-e52b3fd9456484106aaf1052e8c84c3b.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

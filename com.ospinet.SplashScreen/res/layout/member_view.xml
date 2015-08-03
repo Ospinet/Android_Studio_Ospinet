@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:id="@+id/rel">
+
+          <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:background="@android:color/transparent" />/>
+         <RelativeLayout
+            android:id="@+id/rel_home_header"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#374A59" 
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txt_home_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="View Member"
+                android:textColor="#FFFFFF"
+                android:textSize="18dp"
+                android:textStyle="normal|bold" />
+            
+            
+        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rel_home_header1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/member_view"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+<ScrollView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/rel_home_header1"
+    android:layout_marginTop="10dp"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/scrollView">
+
+
+</ScrollView>
+
+    <RelativeLayout
+            android:id="@+id/rel_home_header2"
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:background="#FFFFFF"
+            android:padding="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+
+            <EditText
+                android:id="@+id/edtFname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:textColor="#ffffff"
+
+                android:ems="10"
+                android:hint="First Name"
+                android:gravity="center">
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/edtlname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtFname"
+                android:enabled="false"
+                android:textColor="#ffffff"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+
+                android:ems="10"
+                android:hint="Last Name"
+                android:gravity="center">
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtlname"
+                android:layout_centerHorizontal="true"
+                android:enabled="false"
+                android:layout_marginTop="10dp"
+                android:textColor="#ffffff"
+                android:ems="10"
+                android:hint="Email Id"
+                android:linksClickable="true"
+                android:gravity="center">
+
+                <requestFocus />
+            </EditText>
+
+            <RelativeLayout
+                android:id="@+id/linGender"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_below="@+id/edtEmail"
+                android:layout_alignParentLeft="true">
+
+                <Button
+                    android:id="@+id/btnMale"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_colour"
+
+                    android:enabled="false"
+                    android:text="Male"
+                    android:layout_alignTop="@+id/btnFemale"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/btnFemale"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:background="@drawable/button_colour"
+
+                    android:text="Female"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#000000" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relBirthInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linGender"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relHidden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relBirthInfo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp" >
+
+                <EditText
+                    android:id="@+id/edtAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:textColor="#ffffff"
+
+                    android:ems="10"
+                    android:hint="Age"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:inputType="number"
+                    android:gravity="center">
+
+                    <requestFocus />
+                </EditText>
+            </RelativeLayout>
+
+                <Button
+                    android:id="@+id/btnRecords"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:background="@drawable/button_colour"
+                    android:onClick="viewRecords"
+                    android:text="VIEW RECORDS"
+                    android:layout_below="@+id/relHidden"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true" />
+
+
+                    </RelativeLayout>
+</RelativeLayout>
+

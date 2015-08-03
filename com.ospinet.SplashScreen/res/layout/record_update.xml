@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rel">
+ <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/scrollView"
+        android:layout_alignParentLeft="true"
+        android:background="@android:color/transparent" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/scrollView">
+
+        <RelativeLayout
+            android:id="@+id/rel_home_header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="20dp" >
+
+            <EditText
+                android:id="@+id/edtTitle"
+                android:fontFamily="Walkway-light"
+                android:textColorHint="#ffb8c6c8"
+                android:layout_width="fill_parent"
+                android:layout_height="41dp"
+                android:background="@drawable/textbox"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:ems="14"
+                android:hint="Title">
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/edtTags"
+                android:fontFamily="Walkway-light"
+                android:textColorHint="#ffb8c6c8"
+                android:layout_width="fill_parent"
+                android:layout_height="41dp"
+                android:background="@drawable/textbox"
+                android:layout_below="@+id/edtTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:ems="14"
+                android:hint="Tags">
+            </EditText>
+
+            <EditText
+                android:id="@+id/edtDescription"
+                android:fontFamily="Walkway-light"
+                android:textColorHint="#ffb8c6c8"
+                android:layout_width="fill_parent"
+                android:layout_height="41dp"
+                android:background="@drawable/textbox"
+                android:layout_below="@+id/edtTags"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:hint="Description"
+                android:ems="14"
+                android:inputType="textMultiLine">
+            </EditText>
+
+            <ImageView
+                android:id="@+id/imgFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/relBtn"
+                android:layout_below="@+id/edtDescription"
+                android:layout_alignParentLeft="true" />
+
+            <RelativeLayout
+                android:id="@+id/relBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgFile"
+                android:layout_marginTop="10dp"
+                android:layout_alignRight="@+id/edtDescription"
+                android:layout_alignParentLeft="true">
+
+                <Button
+                    android:id="@+id/btnEdit"
+                    android:layout_height="41dp"
+                    android:background="@drawable/button_custom"
+                    android:layout_width="150dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="Edit_Record"
+                    android:text="Save"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold">
+                </Button>
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_height="41dp"
+                    android:background="@drawable/button_custom"
+                    android:layout_width="150dp"
+                    android:onClick="cancel"
+                    android:text="Cancel"
+                    android:layout_alignTop="@+id/btnEdit"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true">
+                </Button>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+<TextView 
+    android:id="@+id/txtForgotPassword"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:textColor="#ff6f6f6f"
+    android:textSize="24sp"
+    android:text="Privacy Policy"
+    android:gravity="center"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:paddingTop="10dp"
+    android:paddingBottom="15dp" />
+
+
+    <RelativeLayout
+        android:layout_height="375dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/txtForgotPassword"
+        android:layout_alignParentLeft="true">
+
+        <RelativeLayout
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:id="@+id/relativeLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true">
+
+                <Button
+                     android:id="@+id/btnOK"
+                     android:layout_width="100dp"
+                     android:layout_height="41dp"
+                    android:background="@drawable/button_custom"
+                    android:text="OK"
+                     android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:paddingBottom="7dp"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+        <TextView
+        android:id="@+id/privacypolicytxt1"
+        android:layout_height="wrap_content"
+        android:fontFamily="Walkway-light"
+        android:layout_width="350dp"
+        android:textColor="#ff555555"
+        android:textSize="14sp"
+        android:text=" We know you care about your life, and that of
+ your near and dear ones. We do too.\n\n
+  At Ospinet we understand the importance of
+ quality healthcare, and realize healthcare record
+ management needs to be a tool not a hurdle for a
+ better healthier life. We comply with HIPPA and
+ ensure maximum privacy of your records. All your
+ records are encrypted with 256 AES encryption
+ making it as secure as, well, the US government
+ records.\n\n
+  We guarantee we will never share your
+ personal contact information with any third
+ party without your consent."
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

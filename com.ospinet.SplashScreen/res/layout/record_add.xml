@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:id="@+id/rel">
+ <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" >
+
+    <RelativeLayout
+        android:id="@+id/rel_home_header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_below="@+id/rel_home_header"
+        android:layout_alignParentLeft="true">
+
+        <EditText
+            android:id="@+id/edtTitle"
+            android:textColorHint="#ffb8c6c8"
+            android:fontFamily="Walkway-light"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@drawable/edt_selector"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:ems="14"
+            android:hint="Title">
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/edtTags"
+            android:textColorHint="#ffb8c6c8"
+            android:fontFamily="Walkway-light"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@drawable/edt_selector"
+            android:layout_below="@+id/edtTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="1dp"
+            android:ems="14"
+            android:hint="Tags">
+
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/edtDescription"
+            android:textColorHint="#ffb8c6c8"
+            android:fontFamily="Walkway-light"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@drawable/edt_selector"
+            android:layout_below="@+id/edtTags"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="1dp"
+            android:hint="Description"
+            android:ems="14"
+            android:inputType="textMultiLine">
+
+        </EditText>
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:onClick="upload_image"
+            android:background="@drawable/upload"/>
+
+         <ImageView
+            android:id="@+id/imgFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_alignRight="@+id/relBtn"
+             android:layout_below="@+id/btnUpload"
+             android:layout_alignParentLeft="true"/>
+
+        <RelativeLayout
+            android:id="@+id/relBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgFile"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="150dp"
+                android:layout_height="41dp"
+                android:background="@drawable/button_custom_two"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingBottom="7dp"
+                android:textColor="#FFFFFF"
+                android:onClick="Add_Record"
+                android:text="Add"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true">
+            </Button>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="150dp"
+                android:layout_height="41dp"
+                android:background="@drawable/button_custom"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingBottom="7dp"
+                android:textColor="#FFFFFF"
+                android:onClick="cancel"
+                android:text="Cancel"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true">
+            </Button>
+        </RelativeLayout>
+    </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

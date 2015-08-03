@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_horizontal"
+    android:background="#1BA0A2"
+    android:padding="5dp">
+
+    <ImageButton
+        android:id="@+id/options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_icon"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true" />
+
+    <LinearLayout
+           android:id="@+id/lL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/options"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="true">
+    <ImageButton
+        android:id="@+id/logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:background="@drawable/ospinet_big_logo" />
+
+        <TextView
+            android:id="@+id/logoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OSPINET"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="3dp"
+            android:clickable="true"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="true"
+        android:hint="Search"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:layout_alignTop="@+id/lL"
+        android:layout_alignBottom="@+id/lL"
+        android:layout_alignLeft="@+id/lL"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF">
+
+    </EditText>
+    </LinearLayout>
+</RelativeLayout>

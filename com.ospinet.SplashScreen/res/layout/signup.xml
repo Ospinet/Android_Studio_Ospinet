@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#E9E9E9"
+    android:fillViewport="true">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rel_signup_outer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rel_signup_header"
+        android:background="#E9E9E9">
+
+	  <RelativeLayout
+          android:id="@+id/rel_signup_innercontainer"
+          android:layout_width="match_parent"
+          android:layout_height="fill_parent"
+          android:background="@android:color/transparent"
+          android:paddingBottom="15dp"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentLeft="true"
+          android:layout_marginTop="27dp">
+
+		<EditText
+		    android:id="@+id/edt_signup_firstname"
+            android:textColorHint="#ffb8c6c8"
+            android:fontFamily="Walkway-light"
+		    android:layout_width="match_parent"
+		    android:layout_height="48dp"
+		    android:layout_below="@+id/txt_signup_message"
+		    android:background="@drawable/edt_selector"
+		    android:hint="First Name"
+		    android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:drawableRight="@drawable/nameselector"
+		    android:singleLine="true"
+            android:longClickable="false"
+            android:textSize="17dp">
+		    <requestFocus/></EditText>
+
+		<EditText
+		    android:id="@+id/edt_signup_lastname"
+            android:fontFamily="Walkway-light"
+            android:textColorHint="#ffb8c6c8"
+		    android:layout_width="match_parent"
+		    android:layout_height="48dp"
+		    android:layout_below="@+id/edt_signup_firstname"
+		    android:background="@drawable/edt_selector"
+		    android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="4dp"
+		    android:hint="Last Name"
+            android:drawableRight="@drawable/nameselector"
+            android:textSize="17dp">
+		</EditText>
+
+		<EditText
+		    android:id="@+id/edt_signup_email"
+            android:fontFamily="Walkway-light"
+            android:textColorHint="#ffb8c6c8"
+		    android:layout_width="match_parent"
+		    android:layout_height="48dp"
+		    android:layout_below="@+id/edt_signup_lastname"
+		    android:background="@drawable/edt_selector"
+		    android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="4dp"
+		    android:hint="Email"
+		    android:drawableRight="@drawable/emailselector"
+		    android:inputType="textEmailAddress"
+            android:textSize="17dp" />
+
+		<EditText
+		    android:id="@+id/edt_signup_reemail"
+            android:fontFamily="Walkway-light"
+            android:textColorHint="#ffb8c6c8"
+		    android:layout_width="match_parent"
+		    android:layout_height="48dp"
+		    android:layout_below="@+id/edt_signup_email"
+		    android:background="@drawable/edt_selector"
+		    android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:drawableRight="@drawable/emailselector"
+            android:layout_marginTop="4dp"
+		    android:ems="10"
+		    android:hint="Confirm Email"
+		    android:inputType="textEmailAddress"
+            android:textSize="17dp" />
+
+		<EditText
+		    android:id="@+id/edt_signup_password"
+            android:fontFamily="Walkway-light"
+            android:textColorHint="#ffb8c6c8"
+            android:drawableRight="@drawable/password_bg"
+		    android:layout_width="match_parent"
+		    android:layout_height="48dp"
+		    android:layout_below="@+id/edt_signup_reemail"
+		    android:background="@drawable/edt_selector"
+		    android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="4dp"
+		    android:ems="10"
+		    android:hint="Password"
+		    android:inputType="textPassword"
+            android:textSize="17dp" />
+
+		<EditText
+		    android:id="@+id/edt_signup_repassword"
+            android:fontFamily="Walkway-light"
+            android:textColorHint="#ffb8c6c8"
+		    android:layout_width="match_parent"
+		    android:layout_height="48dp"
+		    android:layout_below="@+id/edt_signup_password"
+		    android:background="@drawable/edt_selector"
+		    android:layout_marginLeft="10dp"
+            android:layout_marginTop="4dp"
+            android:drawableRight="@drawable/password_bg"
+		    android:ems="10"
+		    android:hint="Confirm Password"
+		    android:inputType="textPassword"
+            android:layout_alignRight="@+id/edt_signup_password"
+            android:textSize="17dp"/>
+
+          <TextView
+              android:id="@+id/txtTerms"
+              android:fontFamily="Walkway-Bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="By clicking Register, you agree to Ospinet's"
+              android:textColor="#787878"
+              android:textSize="15dp"
+              android:layout_below="@+id/edt_signup_repassword"
+              android:layout_alignLeft="@+id/edt_signup_repassword"
+              android:layout_alignRight="@+id/edt_signup_repassword"
+              android:gravity="center"
+              android:layout_marginTop="10dp"/>
+      <TextView
+              android:id="@+id/textView"
+              android:fontFamily="Walkway-Bold"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="User Agreement, Privacy Policy"
+              android:textColor="#787878"
+              android:textSize="15dp"
+           
+              android:layout_below="@+id/txtTerms"
+              android:layout_centerHorizontal="true"
+              android:paddingBottom="8dp"
+              android:onClick="PrivacyPolicy"
+              android:clickable="true"
+              android:textStyle="bold" />
+
+          
+		<Button
+		    android:id="@+id/btn_signup_register"
+		    style="@drawable/button_custom"
+		    android:layout_width="match_parent"
+		    android:layout_height="48dp"
+            android:background="@drawable/button_custom"
+		    android:text="Register"
+		    android:textSize="20dp"
+		    android:textColor="#FFFFFF"
+		    android:onClick="register"
+            android:layout_below="@+id/textView"
+            android:layout_alignLeft="@+id/txtTerms"
+            android:textStyle="bold"
+            android:paddingBottom="7dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignRight="@+id/txtTerms" />
+
+          </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
+  	</ScrollView>

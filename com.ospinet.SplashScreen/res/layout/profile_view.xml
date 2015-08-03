@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EBEFF2"
+    android:id="@+id/rel" >
+
+    <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="2"
+        android:id="@+id/lin"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:id="@+id/header"
+            android:background="#ffffff"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/TextNameLetters"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:textColor="#79888A"
+                android:textSize="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <RelativeLayout
+                android:id="@+id/linGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtName"
+                android:text="login_user"
+                android:textColor="#79888A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imgVerified"
+                android:clickable="true"
+                android:background="@drawable/tick"
+                android:layout_above="@+id/txtGender"
+                android:layout_alignLeft="@+id/imgVerifiedOne" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtEmail"
+                android:text="User email id"
+                android:textColor="#79888A"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/txtName"
+                android:paddingTop="20dp" />
+
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imgVerifiedOne"
+                android:clickable="true"
+                android:background="@drawable/tick"
+                android:layout_above="@+id/txtEmail"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtGenderfix"
+                android:text="Gender   :"
+                android:textColor="#79888A"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_below="@+id/txtEmail"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtGender"
+                android:text="  Gender value"
+                android:textColor="#79888A"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_alignTop="@+id/txtGenderfix"
+                android:layout_toRightOf="@+id/txtDOBfix" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDOBfix"
+                android:text="Age          : "
+                android:textColor="#79888A"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_below="@+id/txtGenderfix"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDOB"
+                android:text="  DOB value"
+                android:textColor="#79888A"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_alignTop="@+id/txtDOBfix"
+                android:layout_alignLeft="@+id/txtGender" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtYears"
+                android:text=" years old"
+                android:textColor="#79888A"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:layout_alignTop="@+id/txtDOB"
+                android:layout_toRightOf="@+id/txtDOB" />
+        </RelativeLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/relbuttons"
+            android:background="#FFFFFF">
+
+            <Button
+                android:id="@+id/btnpwd"
+                style="@drawable/button_custom"
+                android:layout_width="fill_parent"
+                android:layout_height="41dp"
+                android:background="@drawable/button_custom"
+                android:text="Change Password"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true" />
+        </RelativeLayout>
+        </LinearLayout>
+</RelativeLayout>

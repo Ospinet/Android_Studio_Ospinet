@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="#808080"
+    android:gravity="center_vertical"
+    android:minHeight="400dp"
+    android:minWidth="300dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/options"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="true">
+
+    <ImageButton
+        android:id="@+id/record"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_gravity="right" />
+
+    <ImageButton
+    android:id="@+id/file"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:src="@drawable/ic_launcher" />
+    />
+    </LinearLayout>
+</LinearLayout>

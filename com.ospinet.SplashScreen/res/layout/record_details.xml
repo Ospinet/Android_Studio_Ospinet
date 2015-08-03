@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="#808080"
+    android:gravity="center_vertical"
+    android:minHeight="400dp"
+    android:minWidth="300dp"
+    android:orientation="vertical" >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Member"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFFFFF"
+        android:paddingBottom="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/Owner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:longClickable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Record Owner                 :"
+        android:id="@+id/textViewOwner"
+        android:layout_gravity="center_horizontal|left"
+        android:paddingTop="8dp"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/OwnerName"
+            android:layout_gravity="center_horizontal|right"
+            android:paddingTop="8dp"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/textViewOwner" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:longClickable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Record Title                     :"
+        android:id="@+id/textViewTitle"
+        android:layout_gravity="center_horizontal|left"
+        android:paddingTop="8dp"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RTitle"
+            android:layout_gravity="center_horizontal|right"
+            android:paddingTop="8dp"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/textViewTitle" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Tags"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:longClickable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Record Tags                    :"
+        android:id="@+id/textViewTags"
+        android:paddingTop="8dp"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RTags"
+            android:layout_gravity="center_horizontal|right"
+            android:paddingTop="8dp"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/textViewTags" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Desc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:longClickable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Record Description         :"
+        android:id="@+id/textViewDesc"
+        android:paddingTop="8dp"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RDesc"
+            android:layout_gravity="center_horizontal|right"
+            android:paddingTop="8dp"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/textViewDesc" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Desc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:longClickable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Created Date                    :"
+        android:id="@+id/textViewDate"
+        android:paddingTop="8dp"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RDate"
+            android:layout_gravity="center_horizontal|right"
+            android:paddingTop="8dp"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/textViewDate" />
+
+    </RelativeLayout>
+</LinearLayout>

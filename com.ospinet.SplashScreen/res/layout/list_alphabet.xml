@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout android:id="@+id/relfriends"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp">
+
+        <LinearLayout
+            android:id="@+id/sideIndex"
+            android:layout_width="30dip"
+            android:layout_height="fill_parent"
+            android:background="#FFF"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_alignBottom="@android:id/list"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp">
+        </LinearLayout>
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:divider="#f1f0f0"
+            android:dividerHeight="4dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/btnAdd"
+            android:layout_toLeftOf="@+id/sideIndex"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            style="@drawable/button_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:background="@drawable/button_custom_two"
+            android:text="Add selected"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="19dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:singleLine="false"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</LinearLayout>

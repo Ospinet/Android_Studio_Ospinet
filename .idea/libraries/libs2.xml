@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/libs/android-support-v4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/libs/android-query-full.0.25.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/libs/httpmime-4.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

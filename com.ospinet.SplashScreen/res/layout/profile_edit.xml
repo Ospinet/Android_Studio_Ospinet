@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9E9E9"
+        
+    android:id="@+id/rel">
+    <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/scrolledit">
+
+
+        <RelativeLayout
+            android:id="@+id/rel_home_header"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_centerInParent="true"
+            android:background="#E9E9E9"
+            android:padding="15dp">
+
+            
+            <EditText
+                android:id="@+id/edtFname"
+                android:textColorHint="#ffb8c6c8"
+                android:fontFamily="Walkway-light"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:textSize="17dp"
+                android:background="@drawable/edt_selector"
+                android:hint="First Name"
+                android:singleLine="true"
+                android:layout_marginTop="10dp"
+                android:drawableRight="@drawable/nameselector"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+                <requestFocus /></EditText>
+
+            <EditText
+                android:id="@+id/edtlname"
+                android:textColorHint="#ffb8c6c8"
+                android:fontFamily="Walkway-light"
+                android:drawableRight="@drawable/nameselector"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:textSize="17dp"
+                android:layout_below="@+id/edtFname"
+                android:background="@drawable/edt_selector"
+                
+                android:hint="Last Name"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:layout_alignLeft="@+id/edtFname"
+                android:layout_alignRight="@+id/edtFname">
+                <requestFocus /></EditText>
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:textColorHint="#ffb8c6c8"
+                android:fontFamily="Walkway-light"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:drawableRight="@drawable/emailselector"
+                android:textSize="17dp"
+                android:layout_below="@+id/edtlname"
+                android:background="@drawable/edt_selector"
+                android:hint="Email"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:layout_alignLeft="@+id/edtlname"
+                android:layout_alignRight="@+id/edtlname"
+                android:editable="false">
+                <requestFocus /></EditText>
+
+            <RelativeLayout
+                android:id="@+id/linGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtEmail"
+                android:layout_marginTop="15dp"
+                android:longClickable="true"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/btnMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/maleselector"
+                    android:onClick="maleClicked"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="5dp"/>
+
+                <ImageView
+                    android:id="@+id/btnFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/femaleselector"
+                    android:onClick="femaleClicked"
+                    android:layout_alignTop="@+id/btnMale"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/btnMale"
+                     />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/relBirthInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linGender"
+                android:layout_marginTop="10dp"
+                android:longClickable="true"
+                android:layout_alignLeft="@+id/edtEmail"
+                android:layout_alignRight="@+id/edtEmail">
+             
+
+                <Button
+                    android:id="@+id/btnDOB"
+                    android:layout_width="100dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_height="41dp"
+                    android:paddingBottom="7dp"
+                    android:background="@drawable/button_custom"
+                    android:onClick="dobClicked"
+                    android:text="DOB"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true" />
+
+                <Button
+                    android:id="@+id/btnAge"
+                    android:layout_width="100dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_height="41dp"
+                    android:paddingBottom="7dp"
+                    android:background="@drawable/button_custom"
+                    android:onClick="ageClicked"
+                    android:text="Age"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:id="@+id/btnUnborn"
+                    android:layout_width="100dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_height="41dp"
+                    android:paddingBottom="7dp"
+                    android:onClick="unbornClicked"
+                    android:background="@drawable/button_custom"
+                    android:text="Unborn"
+                    android:layout_alignTop="@+id/btnAge"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relHidden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relBirthInfo"
+                android:layout_marginTop="10dp"
+                android:layout_alignRight="@+id/relBirthInfo"
+                android:layout_alignLeft="@+id/relBirthInfo">
+
+                <EditText
+                    android:id="@+id/edtAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="Age"
+                    android:inputType="number"
+                    android:gravity="center">
+
+                    <requestFocus />
+                </EditText>
+
+                <Spinner
+                    android:id="@+id/spinYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:longClickable="true" />
+
+                  <Spinner
+                    android:id="@+id/spinMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/spinYear"/>
+                   <Spinner
+                    android:id="@+id/spinDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/spinMonth"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/relBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relHidden"
+                android:layout_marginTop="10dp"
+                android:layout_alignLeft="@+id/relBirthInfo"
+                android:layout_alignRight="@+id/relBirthInfo">
+
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="150dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_height="41dp"
+                    android:paddingBottom="7dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_custom"
+                    android:onClick="update_member"
+                    android:text="Update">
+                </Button>
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="150dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_height="41dp"
+                    android:paddingBottom="7dp"
+                    android:background="@drawable/button_custom"
+                    android:onClick="cancel"
+                    android:text="Cancel"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true">
+                </Button>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
+
+

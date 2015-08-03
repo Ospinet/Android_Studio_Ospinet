@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/lstselector"
+    android:id="@+id/rel">
+
+    <RelativeLayout
+        android:id="@+id/rec_outer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+
+        <RelativeLayout
+            android:id="@+id/rec_profile_outer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+    <RelativeLayout
+        android:id="@+id/rec_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.ospinet.app.RoundedImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/doc"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+     android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp" />
+    </RelativeLayout>
+</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:id="@+id/rel_name"
+            android:layout_toRightOf="@+id/rec_profile_outer"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/rec_profile_outer">
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:text="Name">
+        </TextView>
+            <TextView
+                android:id="@+id/txtAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:text="   Age"
+                android:layout_below="@+id/txtGenderOnly"
+                android:layout_alignLeft="@+id/txtGender">
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtGenderOnly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:text="Gender    :"
+                android:layout_below="@+id/txtName"
+                android:layout_marginTop="2dp"
+                android:layout_alignParentLeft="true">
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:text="   Gender"
+                android:layout_alignTop="@+id/txtGenderOnly"
+                android:layout_centerHorizontal="true">
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtAgeOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:text="Age          :"
+                android:layout_alignParentLeft="true"
+                android:layout_alignTop="@+id/txtAge">
+            </TextView>
+            <ImageView
+                android:id="@+id/rightarrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/play"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtId"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtBirthInfo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtBirthDay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtBirthMonth"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtBirthYear"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtProfilePic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" >
+        </TextView>
+
+    </RelativeLayout>
+    </RelativeLayout>

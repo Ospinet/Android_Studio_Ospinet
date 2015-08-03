@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/rel">
+
+      <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+    android:layout_alignParentTop="true">
+
+    <RelativeLayout android:id="@+id/rel_home_header1"
+        android:layout_height="520dp"
+        android:layout_width="match_parent">
+
+<TextView
+    android:id="@+id/txtHelp"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:textColor="#67BBE8"
+    android:textSize="24sp"
+    android:text="Help"
+    android:textStyle="bold"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true" />
+
+<TextView
+    android:id="@+id/txtMessage"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:textColor="#374a59"
+    android:textSize="18sp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:text="Please enter your question, we will get back to you right away"
+    android:layout_below="@+id/txtHelp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
+    android:textStyle="bold"
+    android:gravity="center" />
+
+    <EditText
+        android:id="@+id/edtTo_Email"
+        android:fontFamily="Walkway-light"
+        android:textColorHint="#ffb8c6c8"
+        android:layout_width="350dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="28dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:ems="10"
+        android:hint="To"
+        android:textSize="15sp"
+        android:inputType="textEmailAddress"
+        android:text="admin@ospinet.com"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:editable="false"
+        android:focusable="false"
+        android:textColor="#000000"
+        android:layout_below="@+id/txtMessage"
+        android:layout_alignRight="@+id/btnSend" />
+
+<EditText
+    android:id="@+id/edtEmail"
+    android:fontFamily="Walkway-light"
+    android:textColorHint="#ffb8c6c8"
+    android:layout_width="fill_parent"
+    android:layout_height="41dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:ems="10"
+    android:textColor="#000000"
+    android:hint="Your Email id"
+    android:textSize="15sp"
+    android:inputType="textEmailAddress"
+    android:gravity="center"
+    android:autoText="true"
+    android:focusable="false"
+    android:layout_below="@+id/edtTo_Email"
+    android:layout_alignLeft="@+id/edtTo_Email"
+    android:layout_alignRight="@+id/edtTo_Email"
+    android:editable="false" />
+
+        <EditText
+            android:id="@+id/editDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:inputType="textMultiLine"
+            android:focusable="true"
+            android:hint="Please type your question"
+            android:gravity="center"
+            android:layout_below="@+id/edtEmail"
+            android:background="@drawable/textbox"
+
+            android:layout_alignLeft="@+id/edtEmail"
+            android:layout_alignRight="@+id/edtEmail"
+            android:editable="true" />
+
+        <Button
+               android:id="@+id/btnSend"
+            style="@drawable/button_custom"
+            android:layout_width="fill_parent"
+            android:layout_height="41dp"
+            android:background="@drawable/button_custom_two"
+            android:text="Send"
+               android:textColor="#FFFFFF"
+            android:layout_below="@+id/editDescription"
+            android:layout_marginTop="5dp"
+            android:layout_alignRight="@+id/btnCancel"
+            android:textStyle="bold"
+            android:layout_alignLeft="@+id/btnCancel" />
+
+        <Button
+             android:id="@+id/btnCancel"
+            style="@drawable/button_custom"
+            android:layout_width="340dp"
+            android:layout_height="41dp"
+            android:background="@drawable/button_custom"
+            android:text="Cancel"
+             android:textColor="#FFFFFF"
+             android:layout_marginTop="10dp"
+            android:layout_below="@+id/btnSend"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

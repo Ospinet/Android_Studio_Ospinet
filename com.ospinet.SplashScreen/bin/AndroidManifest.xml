@@ -1,0 +1,56 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ospinet.app"
+    android:versionCode="3"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+<uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  
+    <application
+        android:icon="@drawable/applogo"
+        android:label="@string/app_name"
+       android:theme="@style/AppTheme">
+
+        <activity
+            android:name="com.ospinet.app.SplashScreen"
+            android:label="@string/title_activity_login" 
+            android:screenOrientation="portrait">
+           </activity>
+            <activity android:name="com.ospinet.app.HomeActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.LoginActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.SignUpActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.MemberActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Member_Home" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Member_View" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Member_Edit" android:screenOrientation="portrait"></activity>
+            <activity android:name="com.ospinet.app.Records_Home" android:screenOrientation="portrait"></activity>
+            <activity android:name="com.ospinet.app.Record_Edit" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Record_View" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.RecordActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.help" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Record_Details" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Profile_view" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Profile_Edit" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.File_records_list" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.PreMemberHome" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Share" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.ContactsMainActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Notifications_Details" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Friend_requests" android:screenOrientation="portrait" ></activity>
+            <activity android:name=".SearchMainActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name=".ShareMainActivity" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.login_2" android:screenOrientation="portrait" android:noHistory="true">
+                 <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+                
+            </activity>
+    </application>
+
+</manifest>
