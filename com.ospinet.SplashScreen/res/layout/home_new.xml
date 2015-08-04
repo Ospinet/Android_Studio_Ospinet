@@ -18,8 +18,8 @@
         android:background="#1BA0A2"
         android:gravity="center"
         android:layout_alignLeft="@+id/scrollView"
-        android:layout_alignRight="@+id/scrollView"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="2dp"
+        android:layout_alignRight="@+id/scrollView">
 
         <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"

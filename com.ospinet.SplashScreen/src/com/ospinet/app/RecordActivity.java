@@ -136,7 +136,6 @@ public class AddRecordAsync extends AsyncTask<String, String, String> {
 			ArrayList<NameValuePair> loginParam = new ArrayList<NameValuePair>();
 			loginParam.add(new BasicNameValuePair("member_id", memid));
 			loginParam.add(new BasicNameValuePair("title", title));
-
 			loginParam.add(new BasicNameValuePair("tagname", tagname));
 			loginParam.add(new BasicNameValuePair("description", description));
 			

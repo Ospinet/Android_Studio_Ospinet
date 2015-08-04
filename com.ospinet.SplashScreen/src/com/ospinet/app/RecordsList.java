@@ -2,9 +2,11 @@ package com.ospinet.app;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -186,42 +188,53 @@ public class RecordsList extends Activity implements ISideNavigationCallback {
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View arg1,
                                             int arg2, long arg3) {
-                        TextView txtId = (TextView) arg1.findViewById(R.id.txtId);
-                        TextView txtMemID = (TextView) arg1.findViewById(R.id.txtMemID);
-                        TextView txtDescription = (TextView) arg1.findViewById(R.id.txtDescription);
-                        TextView txtDate = (TextView) arg1.findViewById(R.id.txtDate);
-                        TextView txtTitle = (TextView) arg1.findViewById(R.id.txtTitle);
-                        TextView txtTag = (TextView) arg1.findViewById(R.id.txtTag);
-                        TextView txtFname = (TextView) arg1.findViewById(R.id.txtFname);
-                        TextView txtLname = (TextView) arg1.findViewById(R.id.txtLname);
 
+                        TextView txtMemID = (TextView) arg1.findViewById(R.id.txtMemID);
+                        final String memId = txtMemID.getText().toString();
+                        TextView txtId = (TextView) arg1.findViewById(R.id.txtId);
                         final String recId = txtId.getText().toString();
-                        final String recMemid = txtMemID.getText().toString();
-                        final String recDesc = txtDescription.getText().toString();
-                        final String recDate = txtDate.getText().toString();
-                        final String recTitle = txtTitle.getText().toString();
-                        final String recTag = txtTag.getText().toString();
-                        final String recFname = txtFname.getText().toString();
-                        final String recLname = txtLname.getText().toString();
                         final Dialog builder = new Dialog(RecordsList.this);
 
-                        Intent i = new Intent(RecordsList.this, Record_Details.class);
-                        i.putExtra("record_id", recId);
-                        i.putExtra("member_id", recMemid);
-                        i.putExtra("record_desc", recDesc);
-                        i.putExtra("record_date", recDate);
-                        i.putExtra("record_title", recTitle);
-                        i.putExtra("record_tag", recTag);
-                        i.putExtra("member_fname", recFname);
-                        i.putExtra("member_lname", recLname);
-                        // i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        i.putExtra("EXIT", true);
+                        final View view = RecordsList.this.getLayoutInflater().inflate(
+                                R.layout.record_options, null);
+                        builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        builder.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                        builder.setContentView(view);
+                        Button btnEdit = (Button) builder.findViewById(R.id.btn_Edit);
+                        Button btnView = (Button) builder.findViewById(R.id.btn_view);
+
                         builder.show();
-                        RecordsList.this.startActivity(i);
+
+                        btnEdit.setOnClickListener(new OnClickListener() {
+
+                            @Override
+                            public void onClick(View v) {
+                                Intent i = new Intent(RecordsList.this, Edit_Record.class);
+                                i.putExtra("record_id", recId);
+                                i.putExtra("member_id", memId);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                i.putExtra("EXIT", true);
+
+                                RecordsList.this.startActivity(i);
+                                //finish();
+                            }
+                        });
+                        btnView.setOnClickListener(new OnClickListener() {
+
+                            @Override
+                            public void onClick(View v) {
+                                Intent i = new Intent(RecordsList.this, View_Record.class);
+                                i.putExtra("record_id", recId);
+                                i.putExtra("member_id", memId);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                i.putExtra("EXIT", true);
+
+                                RecordsList.this.startActivity(i);
+                                finish();
+                            }
+                        });
                     }
-
                 });
-
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

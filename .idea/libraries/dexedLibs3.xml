@@ -1,34 +1,13 @@
 <component name="libraryTable">
   <library name="dexedLibs">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-7e22f528b23e101a4afb7fc186354451.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-697e22e27bd43f93920c79613bcc1a6b.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/library-aa45c0b0cbc7cd4422cff0f2861a84e8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/library-ff65cd3cbb0e407ca4f42e80ad7c6916.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-466af474d97b5c01b866ce593644f1c8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-support-v13-a808bdcaafadf14d8713902fa90b10c4.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-28ab27cb1e43528b2e9a09f38e504f84.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-cbfe0b56da3221c587caca04fb1ae7ba.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-587a3dc1e83dad2598fcd28b9d006278.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-support-v13-930a882298f28975034a215e814fa63a.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-support-v13-10defca19a0a4770b3a2398dbe9d4130.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/actionbarsherlock-429307c0bf9e082bb1163f752b3af848.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-079400f6af3cda92b68d5f48ed7c0594.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/library-30695cc2d6eadc5e0e2316a0f157944e.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-295b896aac024e2add49380b7fdb33b0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/library-a623a907b3961a9f9adcc49433e02bf4.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/actionbarsherlock-7567f976b613094389f832a968f6c006.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-5298859d170fab5f9361cf50c7ec9466.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/actionbarsherlock-706a4e335cf048c3c6cdfcc1c4d6eba7.jar!/" />
       <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-support-v4-e52b3fd9456484106aaf1052e8c84c3b.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-support-v4-a380c9e25e2034e61dba7091e114cbc0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/actionbarsherlock-a1b0a7f003dba9ecebfb4c24e3705518.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-587a3dc1e83dad2598fcd28b9d006278.jar!/" />
       <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-02f50fd8039793410bfa695528090ecd.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/httpmime-4.1.2-18a2563f4a75ef999f3446fbaac827ff.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-support-v13-a48ffe37a9c8401bd188f48592dc8bd3.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/library-ef5bcd09da9447759a3f268819263ddc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-44741551af062443e1e7f3d529b18218.jar!/" />
-      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/actionbarsherlock-261a5cd59e0b706bc60e6a173188d4d3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/library-ff65cd3cbb0e407ca4f42e80ad7c6916.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-28ab27cb1e43528b2e9a09f38e504f84.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/android-query-full.0.25.10-697e22e27bd43f93920c79613bcc1a6b.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.ospinet.SplashScreen/bin/dexedLibs/actionbarsherlock-706a4e335cf048c3c6cdfcc1c4d6eba7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

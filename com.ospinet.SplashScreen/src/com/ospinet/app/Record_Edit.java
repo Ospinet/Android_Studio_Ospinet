@@ -178,7 +178,6 @@ public class Record_Edit extends Activity implements ISideNavigationCallback {
 			return;
 		}
 		new UpdateRecordAsync().execute();
-
 	}
 
 	public class UpdateRecordAsync extends AsyncTask<String, String, String> {

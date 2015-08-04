@@ -187,13 +187,12 @@ public class Notifications_Details extends Activity implements ISideNavigationCa
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setCustomView(v);
-        TextView edit=(TextView) v.findViewById(R.id.txtEdit);
-        edit.setVisibility(View.INVISIBLE);
-
-        ImageButton imgLogo = (ImageButton) v.findViewById(R.id.logo);
         TextView txtLogoName = (TextView) v.findViewById(R.id.logoName);
+        ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+        TextView txtEdit = (TextView) v.findViewById(R.id.txtEdit);
+        txtEdit.setVisibility(View.INVISIBLE);
 
-        imgLogo.setOnClickListener(new View.OnClickListener() {
+        txtLogoName.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -203,14 +202,15 @@ public class Notifications_Details extends Activity implements ISideNavigationCa
                 startActivity(i);
             }
         });
-        txtLogoName.setOnClickListener(new View.OnClickListener() {
+        imgMenu.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(Notifications_Details.this,PreMemberHome.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(i);
+                sideNavigationView.toggleMenu();
+                RelativeLayout rel = (RelativeLayout) findViewById(R.id.rel);
+                rel.bringChildToFront(sideNavigationView);
+
             }
         });
 
@@ -235,8 +235,26 @@ public class Notifications_Details extends Activity implements ISideNavigationCa
                 break;
 
             case R.id.side_navigation_menu_item3:
-                Intent help = new Intent(Notifications_Details.this, com.ospinet.app.help.class);
+                Intent help = new Intent(Notifications_Details.this, help.class);
                 Notifications_Details.this.startActivity(help);
+
+                break;
+
+            case R.id.side_navigation_menu_item4:
+                Intent home = new Intent(Notifications_Details.this, PreMemberHome.class);
+                Notifications_Details.this.startActivity(home);
+
+                break;
+
+            case R.id.side_navigation_menu_item5:
+                Intent share = new Intent(Notifications_Details.this, ShareMainActivity.class);
+                Notifications_Details.this.startActivity(share);
+
+                break;
+
+            case R.id.side_navigation_menu_item6:
+                Intent search = new Intent(Notifications_Details.this, SearchMainActivity.class);
+                Notifications_Details.this.startActivity(search);
 
                 break;
 

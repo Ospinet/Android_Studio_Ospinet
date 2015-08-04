@@ -385,7 +385,7 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
                         final Dialog builder = new Dialog(Records_Home.this);
 
                         final View view = Records_Home.this.getLayoutInflater().inflate(
-                                R.layout.record_options, null);
+                                R.layout.member_options, null);
                         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         builder.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                         builder.setContentView(view);

@@ -4,18 +4,23 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:background="@drawable/blue_white">
+        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:background="@drawable/blue_white"
+        android:id="@+id/relativeLayout"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
     </RelativeLayout>
 
        <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/view_pager"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/img_login_logo" 
-        android:layout_marginBottom="-30dp"/>
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/img_login_logo"
+        android:layout_marginBottom="-30dp"
+           android:layout_alignLeft="@+id/relativeLayout"
+           android:layout_alignRight="@+id/relativeLayout" />
 
     <au.com.papercloud.pager.SimpleViewPagerIndicator
         android:id="@+id/page_indicator"

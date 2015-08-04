@@ -29,7 +29,9 @@
             <activity android:name="com.ospinet.app.Member_Edit" android:screenOrientation="portrait"></activity>
             <activity android:name="com.ospinet.app.Records_Home" android:screenOrientation="portrait"></activity>
             <activity android:name="com.ospinet.app.Record_Edit" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Edit_Record" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Record_View" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.View_Record" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.RecordActivity" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.help" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Record_Details" android:screenOrientation="portrait" ></activity>

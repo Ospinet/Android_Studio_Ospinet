@@ -6,23 +6,24 @@
 
     <RelativeLayout
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true">
 
          <ImageView
         android:id="@+id/img_login_logo"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:src="@drawable/ospinet_big_logo"
-        
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_centerHorizontal="true"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/scrollView"
             android:layout_below="@+id/img_login_logo"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:layout_alignParentLeft="true">
 
             <RelativeLayout
                 android:id="@+id/rel_login_innercontainer"
@@ -53,7 +54,6 @@
                     android:singleLine="true"
                     android:textColor="#ff1a1a1a"
                     android:textSize="17dp">
-
                     <requestFocus/>
                 </EditText>
 

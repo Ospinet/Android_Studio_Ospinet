@@ -20,38 +20,21 @@
         android:layout_centerHorizontal="true">
 
         <Button
-            android:id="@+id/btn_Delete"
-            style="@drawable/button_custom"
-            android:layout_width="280dp"
-            android:layout_height="41dp"
-            android:background="@drawable/button_custom"
-            android:text="Delete"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:singleLine="false"
-            android:textStyle="bold"
-            android:paddingBottom="7dp"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:alpha="10"/>
-
-        <Button
             android:id="@+id/btn_Edit"
             style="@drawable/button_custom"
             android:layout_width="280dp"
             android:layout_height="41dp"
             android:background="@drawable/button_custom"
-            android:text="Edit"
+            android:text="Edit Record"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
             android:gravity="center"
             android:singleLine="false"
             android:textStyle="bold"
             android:paddingBottom="7dp"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/btn_Delete" />
+            android:layout_marginTop="21dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
 
         <Button
             android:id="@+id/btn_view"
@@ -59,7 +42,7 @@
             android:layout_width="280dp"
             android:layout_height="41dp"
             android:background="@drawable/button_custom"
-            android:text="View"
+            android:text="View Record"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
             android:gravity="center"
