@@ -562,14 +562,14 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
     private void showActionBar() {
         LayoutInflater inflator = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflator.inflate(R.layout.menu2, null);
+        View v = inflator.inflate(R.layout.menu5, null);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowHomeEnabled (false);
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setCustomView(v);
-        search=(SearchView) v.findViewById(R.id.search);
+    /*    search=(SearchView) v.findViewById(R.id.search);
         search.setQueryHint("Search records");
 
         //*** setOnQueryTextListener ***
@@ -593,8 +593,34 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
                 //Toast.LENGTH_SHORT).show();
                 return false;
             }
-        });
+        }); */
+        RelativeLayout second_layout = (RelativeLayout) v.findViewById(R.id.relSearch);
+        second_layout.setVisibility(View.INVISIBLE);
 
+        RelativeLayout first_layout = (RelativeLayout) v.findViewById(R.id.rel_main);
+        first_layout.setVisibility(View.VISIBLE);
+        ImageButton Search = (ImageButton) v.findViewById(R.id.searchImg);
+        Search.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View v) {
+                RelativeLayout first_layout = (RelativeLayout) v.findViewById(R.id.rel_main);
+                first_layout.setVisibility(View.INVISIBLE);
+
+                RelativeLayout second_layout = (RelativeLayout) v.findViewById(R.id.relSearch);
+                second_layout.setVisibility(View.VISIBLE);
+            }
+        });
+        if(second_layout.equals(View.VISIBLE)){
+        ImageButton Back = (ImageButton) v.findViewById(R.id.imageBack);
+        Back.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                RelativeLayout first_layout = (RelativeLayout) v.findViewById(R.id.rel_main);
+                first_layout.setVisibility(View.VISIBLE);
+            }
+        });
+        }
         ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
         ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
         imgAdd.setOnClickListener(new OnClickListener() {

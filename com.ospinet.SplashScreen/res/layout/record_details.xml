@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="match_parent"
     android:background="#808080"
-    android:gravity="center_vertical"
     android:minHeight="400dp"
     android:minWidth="300dp"
     android:orientation="vertical" >
@@ -17,7 +16,8 @@
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:textColor="#FFFFFF"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="16dp"
+        android:layout_marginTop="50dp" />
 
     <RelativeLayout
         android:id="@+id/Owner"
@@ -34,7 +34,8 @@
         android:layout_gravity="center_horizontal|left"
         android:paddingTop="8dp"
         android:textColor="#FFFFFF"
-        android:paddingLeft="8dp" />
+        android:paddingLeft="8dp"
+        android:layout_margin="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +46,8 @@
             android:textColor="#FFFFFF"
             android:paddingLeft="8dp"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/textViewOwner" />
+            android:layout_toRightOf="@+id/textViewOwner"
+            android:layout_margin="5dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -63,7 +65,8 @@
         android:layout_gravity="center_horizontal|left"
         android:paddingTop="8dp"
         android:textColor="#FFFFFF"
-        android:paddingLeft="8dp" />
+        android:paddingLeft="8dp"
+        android:layout_margin="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,7 +77,8 @@
             android:textColor="#FFFFFF"
             android:paddingLeft="8dp"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/textViewTitle" />
+            android:layout_toRightOf="@+id/textViewTitle"
+            android:layout_margin="5dp" />
 
     </RelativeLayout>
 
@@ -92,7 +96,8 @@
         android:id="@+id/textViewTags"
         android:paddingTop="8dp"
         android:textColor="#FFFFFF"
-        android:paddingLeft="8dp" />
+        android:paddingLeft="8dp"
+        android:layout_margin="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -103,7 +108,8 @@
             android:textColor="#FFFFFF"
             android:paddingLeft="8dp"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/textViewTags" />
+            android:layout_toRightOf="@+id/textViewTags"
+            android:layout_margin="5dp" />
 
     </RelativeLayout>
 
@@ -121,7 +127,8 @@
         android:id="@+id/textViewDesc"
         android:paddingTop="8dp"
         android:textColor="#FFFFFF"
-        android:paddingLeft="8dp" />
+        android:paddingLeft="8dp"
+        android:layout_margin="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -132,7 +139,8 @@
             android:textColor="#FFFFFF"
             android:paddingLeft="8dp"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/textViewDesc" />
+            android:layout_toRightOf="@+id/textViewDesc"
+            android:layout_margin="5dp" />
 
     </RelativeLayout>
 
@@ -150,7 +158,8 @@
         android:id="@+id/textViewDate"
         android:paddingTop="8dp"
         android:textColor="#FFFFFF"
-        android:paddingLeft="8dp" />
+        android:paddingLeft="8dp"
+        android:layout_margin="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -161,7 +170,8 @@
             android:textColor="#FFFFFF"
             android:paddingLeft="8dp"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/textViewDate" />
+            android:layout_toRightOf="@+id/textViewDate"
+            android:layout_margin="5dp" />
 
     </RelativeLayout>
 </LinearLayout>

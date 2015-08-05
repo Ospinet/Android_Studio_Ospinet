@@ -87,8 +87,8 @@
                 android:textColor="#000000"
                 android:textSize="20dp"
                 android:text="   Gender"
-                android:layout_alignTop="@+id/txtGenderOnly"
-                android:layout_centerHorizontal="true">
+                android:layout_below="@+id/txtName"
+                android:layout_toRightOf="@+id/txtGenderOnly">
             </TextView>
 
             <TextView

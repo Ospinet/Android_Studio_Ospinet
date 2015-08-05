@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/lstselector" >
+        android:background="@drawable/lstselector"
+        android:layout_alignParentRight="true">
         
         <TextView
             android:id="@+id/txtType_id"
@@ -125,15 +126,13 @@
         <Button
             android:id="@+id/btnIgnore"
             style="@drawable/button_custom"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="30dp"
             android:background="#dedede"
             android:text="IGNORE"
             android:textColor="#7a888a"
             android:singleLine="false"
             android:layout_alignTop="@+id/btnConfirm"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="29dp"
             android:layout_toRightOf="@+id/txtLname"
             android:radius="5dip"
             android:layout_marginLeft="8dp" />

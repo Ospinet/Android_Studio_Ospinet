@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <RelativeLayout android:layout_width="fill_parent"
-            android:layout_height="10dp"
+            android:layout_height="140dp"
             android:layout_weight="1"
             android:id="@+id/header"
             android:background="#ffffff"
@@ -40,7 +40,7 @@
                 android:id="@+id/linGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/TextNameLetters"
                 android:layout_alignParentLeft="true">
 
             <TextView
@@ -150,7 +150,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/relbuttons"
             android:background="#FFFFFF">
@@ -158,13 +158,14 @@
             <Button
                 android:id="@+id/btnpwd"
                 style="@drawable/button_custom"
-                android:layout_width="fill_parent"
+                android:layout_width="200dp"
                 android:layout_height="41dp"
                 android:background="@drawable/button_custom"
                 android:text="Change Password"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:layout_alignParentTop="true" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
         </LinearLayout>
 </RelativeLayout>
