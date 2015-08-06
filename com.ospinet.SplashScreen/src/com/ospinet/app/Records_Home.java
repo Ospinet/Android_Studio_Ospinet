@@ -594,33 +594,15 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
                 return false;
             }
         }); */
-        RelativeLayout second_layout = (RelativeLayout) v.findViewById(R.id.relSearch);
-        second_layout.setVisibility(View.INVISIBLE);
-
-        RelativeLayout first_layout = (RelativeLayout) v.findViewById(R.id.rel_main);
-        first_layout.setVisibility(View.VISIBLE);
         ImageButton Search = (ImageButton) v.findViewById(R.id.searchImg);
         Search.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
-                RelativeLayout first_layout = (RelativeLayout) v.findViewById(R.id.rel_main);
-                first_layout.setVisibility(View.INVISIBLE);
 
                 RelativeLayout second_layout = (RelativeLayout) v.findViewById(R.id.relSearch);
                 second_layout.setVisibility(View.VISIBLE);
             }
         });
-        if(second_layout.equals(View.VISIBLE)){
-        ImageButton Back = (ImageButton) v.findViewById(R.id.imageBack);
-        Back.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                RelativeLayout first_layout = (RelativeLayout) v.findViewById(R.id.rel_main);
-                first_layout.setVisibility(View.VISIBLE);
-            }
-        });
-        }
         ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
         ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
         imgAdd.setOnClickListener(new OnClickListener() {
