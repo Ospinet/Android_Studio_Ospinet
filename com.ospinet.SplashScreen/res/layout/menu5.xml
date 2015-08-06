@@ -72,8 +72,7 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/rel_main"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:visibility="invisible">
+        android:layout_alignParentTop="true">
 
         <ImageButton
             android:id="@+id/imageBack"
@@ -82,19 +81,31 @@
             android:background="@drawable/back_64"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="10dp" />
 
         <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="38dp"
             android:id="@+id/search"
-            android:hint="Search"
-            android:radius="10dip"
+            android:fontFamily="Walkway-light"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:singleLine="true"
+            android:lines="1"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:layout_weight="1"
+            android:layout_marginTop="2dp"
+            android:drawablePadding="10dp"
+            android:paddingLeft="15dp"
+            android:hint="search..."
+            android:focusable="true"
+            android:imeOptions="actionDone"
             android:layout_toRightOf="@+id/imageBack"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true">
+        </EditText>
     </RelativeLayout>
 
 </RelativeLayout>

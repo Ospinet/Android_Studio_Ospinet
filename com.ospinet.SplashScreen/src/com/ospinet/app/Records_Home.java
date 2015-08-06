@@ -25,13 +25,17 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -55,6 +59,9 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
     ArrayList<record> arrrecords;
     public static RecordAdapter rad;
     public static String strQuery;
+    public static String content;
+    EditText SearchBox;
+    RelativeLayout first_layout, second_layout;
     int flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -266,10 +273,10 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
         @Override
         protected void onPreExecute() {
             if(flag != 2){
-            super.onPreExecute();
-            dialog.setMessage("Please Wait..");
-            dialog.show();
-            dialog.setCancelable(false);
+                super.onPreExecute();
+                dialog.setMessage("Please Wait..");
+                dialog.show();
+                dialog.setCancelable(false);
             }
         }
 
@@ -569,40 +576,46 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setCustomView(v);
-    /*    search=(SearchView) v.findViewById(R.id.search);
-        search.setQueryHint("Search records");
 
-        //*** setOnQueryTextListener ***
-        search.setOnQueryTextListener(new OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // TODO Auto-generated method stub
-                strQuery = query;
-                new Searchrecord().execute();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // TODO Auto-generated method stub
-
-             //   flag = 2;
-             //   new Loadrecord().execute();
-                //	Toast.makeText(getBaseContext(), newText,
-                //Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        }); */
+        first_layout = (RelativeLayout) v.findViewById(R.id.rel_main);
+        second_layout = (RelativeLayout) v.findViewById(R.id.relSearch);
+        first_layout.setVisibility(View.VISIBLE);
+        second_layout.setVisibility(View.INVISIBLE);
         ImageButton Search = (ImageButton) v.findViewById(R.id.searchImg);
         Search.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
 
-                RelativeLayout second_layout = (RelativeLayout) v.findViewById(R.id.relSearch);
+                first_layout.setVisibility(View.INVISIBLE);
                 second_layout.setVisibility(View.VISIBLE);
             }
         });
+        ImageButton Back = (ImageButton) v.findViewById(R.id.imageBack);
+        Back.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View v) {
+
+                SearchBox.setText("");
+                first_layout.setVisibility(View.VISIBLE);
+                second_layout.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        SearchBox = (EditText) v.findViewById(R.id.search);
+        SearchBox.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ( (actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN ))){
+                    strQuery = SearchBox.getText().toString();
+                    new Searchrecord().execute();
+                    return false;
+                }
+                else{
+                    return false;
+                }
+            }
+        });
+
         ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
         ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
         imgAdd.setOnClickListener(new OnClickListener() {
