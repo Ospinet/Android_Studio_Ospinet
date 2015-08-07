@@ -1,7 +1,5 @@
 package com.ospinet.app;
 
-
-
 import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
@@ -98,10 +96,8 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         protected void onPostExecute(String Friend_Request_count) {
             if(!Friend_Request_count.replace("\n","").equals("0")){
                 TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
+                friend_count.setVisibility(View.VISIBLE);
                 friend_count.setText(Friend_Request_count);
-            }else{
-                TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
-                friend_count.setVisibility(View.GONE);
             }
         }
 
@@ -131,10 +127,8 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         protected void onPostExecute(String Count) {
             if(!Count.replace("\n","").equals("0")){
                 TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
+                notification_count.setVisibility(View.VISIBLE);
                 notification_count.setText(Count);
-            }else{
-                TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
-                notification_count.setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -293,6 +287,12 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
         ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
         ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
+
+        TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
+        friend_count.setVisibility(View.INVISIBLE);
+
+        TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
+        notification_count.setVisibility(View.INVISIBLE);
 
         imgfriend.setOnClickListener(new OnClickListener() {
 

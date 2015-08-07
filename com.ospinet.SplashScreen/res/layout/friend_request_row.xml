@@ -11,19 +11,12 @@
         android:layout_height="match_parent"
         android:background="@drawable/lstselector"
         android:layout_alignParentRight="true">
-        
-        <TextView
-            android:id="@+id/txtType_id"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="5dp"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:text="Type"
-             >
-        </TextView>
+
+        <RelativeLayout
+            android:id="@+id/outer"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/txtId"
@@ -37,18 +30,7 @@
             android:textStyle="bold"
             android:text="ID">
         </TextView>
-  <TextView
-            android:id="@+id/txtFrom_user_id"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:paddingBottom="15dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="15dp"
-            android:textColor="#000000"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="From">
-        </TextView>
+
         <com.ospinet.app.RoundedImageView
             android:id="@+id/imgProfile"
             android:layout_width="55dp"
@@ -67,7 +49,6 @@
             android:text="Fname"
             android:paddingTop="10dp"
             android:layout_marginTop="21dp"
-            android:layout_below="@+id/txtType_id"
             android:layout_toRightOf="@+id/imgProfile">
         </TextView>
         <TextView
@@ -79,11 +60,11 @@
             android:textSize="20dp"
             android:text="Lname"
             android:paddingTop="10dp"
-            android:layout_above="@+id/txtEmail"
+            android:layout_alignTop="@+id/txtFname"
             android:layout_toRightOf="@+id/txtFname">
         </TextView>
         <TextView
-            android:id="@+id/txtMember_record_id"
+            android:id="@+id/txtUser_id"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_below="@+id/txtTitle"
@@ -92,21 +73,20 @@
             android:paddingTop="5dp"
             android:textColor="#000000"
             android:textSize="17dp"
-            android:text="member_rec_id"
+            android:text="user_id"
             >
         </TextView>
 
         <TextView
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtType"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:paddingLeft="15dp"
             android:paddingTop="10dp"
             android:textColor="#000000"
             android:textSize="20dp"
-            android:text="Email"
-            android:layout_below="@+id/txtFname"
-            android:layout_toRightOf="@+id/txtType_id">
+            android:text="type"
+            android:layout_below="@+id/txtFname">
         </TextView>
         <Button
             android:id="@+id/btnConfirm"
@@ -118,7 +98,7 @@
             android:textColor="#FFFFFF"
             android:singleLine="false"
             android:layout_marginLeft="19dp"
-            android:layout_below="@+id/txtEmail"
+            android:layout_below="@+id/txtType"
             android:layout_toRightOf="@+id/imgProfile"
             android:layout_marginTop="10dp"
             android:radius="5dip"
@@ -126,7 +106,7 @@
         <Button
             android:id="@+id/btnIgnore"
             style="@drawable/button_custom"
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="#dedede"
             android:text="IGNORE"
@@ -138,5 +118,6 @@
             android:layout_marginLeft="8dp" />
 
     </RelativeLayout>
+        </RelativeLayout>
 
 </RelativeLayout>

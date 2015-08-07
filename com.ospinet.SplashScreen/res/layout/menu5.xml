@@ -68,7 +68,7 @@
     </RelativeLayout>
 
     <RelativeLayout android:id="@+id/relSearch"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_width="match_parent"
         android:layout_below="@+id/rel_main"
         android:layout_alignParentLeft="true"
@@ -81,7 +81,7 @@
             android:background="@drawable/back_64"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="10dp" />
 

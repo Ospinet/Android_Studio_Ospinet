@@ -348,6 +348,12 @@ public class RecordsList extends Activity implements ISideNavigationCallback {
 		}
 	});
 
+        TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
+        friend_count.setVisibility(View.INVISIBLE);
+
+        TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
+        notification_count.setVisibility(View.INVISIBLE);
+
 	ImageButton imgLogo = (ImageButton) v.findViewById(R.id.logo);
 	TextView txtLogoName = (TextView) v.findViewById(R.id.logoName);
 	
@@ -399,10 +405,8 @@ public class RecordsList extends Activity implements ISideNavigationCallback {
         protected void onPostExecute(String Friend_Request_count) {
             if(!Friend_Request_count.replace("\n","").equals("0")){
                 TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
+                friend_count.setVisibility(View.VISIBLE);
                 friend_count.setText(Friend_Request_count);
-            }else{
-                TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
-                friend_count.setVisibility(View.GONE);
             }
         }
 
@@ -432,10 +436,8 @@ public class RecordsList extends Activity implements ISideNavigationCallback {
         protected void onPostExecute(String Count) {
             if(!Count.replace("\n","").equals("0")){
                 TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
+                notification_count.setVisibility(View.VISIBLE);
                 notification_count.setText(Count);
-            }else{
-                TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
-                notification_count.setVisibility(View.INVISIBLE);
             }
         }
 

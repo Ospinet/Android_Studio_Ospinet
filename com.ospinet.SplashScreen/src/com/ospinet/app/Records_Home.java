@@ -594,8 +594,8 @@ public class Records_Home extends Activity implements ISideNavigationCallback {
         Back.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
-
                 SearchBox.setText("");
+                new Loadrecord().execute();
                 first_layout.setVisibility(View.VISIBLE);
                 second_layout.setVisibility(View.INVISIBLE);
             }
