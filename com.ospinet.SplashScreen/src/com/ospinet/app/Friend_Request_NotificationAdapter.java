@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import com.androidquery.AQuery;
+
 public class Friend_Request_NotificationAdapter extends BaseAdapter {
     private static ArrayList<Friend_request_notification> req_notify;
     private LayoutInflater mInflater;
@@ -17,6 +19,7 @@ public class Friend_Request_NotificationAdapter extends BaseAdapter {
     public Friend_Request_NotificationAdapter(Context context, ArrayList<Friend_request_notification> results) {
         req_notify = results;
         mInflater = LayoutInflater.from(context);
+        mContext = context;
     }
 
     @Override
@@ -52,7 +55,7 @@ public class Friend_Request_NotificationAdapter extends BaseAdapter {
             holder.txtLname = (TextView) convertView.findViewById(R.id.txtLname);
             holder.txtType = (TextView) convertView.findViewById(R.id.txtType);
             holder.txtUser_id = (TextView) convertView.findViewById(R.id.txtUser_id);
-            holder.txtProfile = (TextView) convertView.findViewById(R.id.imgProfile);
+            holder.txtProfile = (RoundedImageView) convertView.findViewById(R.id.imgProfile);
 
             convertView.setTag(holder);
         } else
@@ -66,7 +69,17 @@ public class Friend_Request_NotificationAdapter extends BaseAdapter {
         holder.txtLname.setText(req_notify.get(position).getlname());
         holder.txtType.setText(req_notify.get(position).gettype());
         holder.txtUser_id.setText(req_notify.get(position).getuser_id());
-        holder.txtProfile.setText(req_notify.get(position).getprofile());
+      //  holder.txtProfile.setText(req_notify.get(position).getprofile());
+        AQuery androidAQuery = new AQuery(
+                mContext);
+
+        if(req_notify.get(position).getprofile() == null || req_notify.get(position).getprofile().equals("null") || req_notify.get(position).getprofile().equals("")){
+            androidAQuery.id(holder.txtProfile).image(
+                    "http://ospinet.com/assets/images/people/250/default_avatar_250x250.png", false, false,0, 0);   //"http://ospinet.com/assets/images/people/250/default_avatar_250x250.png"
+        }else{
+            androidAQuery.id(holder.txtProfile).image(
+                    "http://ospinet.com/profile_pic/member_pic_250/" + req_notify.get(position).getprofile() +"_250." + req_notify.get(position).gettype(), false, false,0, 0);   //"http://ospinet.com/profile_pic/member_pic_250/" + profile_image;
+        }
         return convertView;
 
     }
@@ -76,7 +89,7 @@ public class Friend_Request_NotificationAdapter extends BaseAdapter {
         TextView txtLname;
         TextView txtType;
         TextView txtUser_id;
-        TextView txtProfile;
+        RoundedImageView txtProfile;
 
     }
 

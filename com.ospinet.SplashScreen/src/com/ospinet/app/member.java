@@ -13,7 +13,16 @@ public class member {
 	private String birth_year;
 	private String email;
 	private String profile_pic;
-    public member() {
+	private String type;
+    public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public member() {
        
     }
 

@@ -85,33 +85,51 @@ public class Profile_view extends  Activity implements ISideNavigationCallback {
 
     @Override
     public void onSideNavigationItemClick(int itemId) {
-    	switch(itemId)
-    	{
-    case R.id.side_navigation_menu_item1:
-        Intent i = new Intent(Profile_view.this, LoginActivity.class);
-    	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	i.putExtra("EXIT", true);
+        switch(itemId)
+        {
+            case R.id.side_navigation_menu_item1:
+                Intent i = new Intent(Profile_view.this, LoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.putExtra("EXIT", true);
 
-    	Profile_view.this.startActivity(i);
+                Profile_view.this.startActivity(i);
 
-    	break;
+                break;
 
-    case R.id.side_navigation_menu_item2:
-         Intent records = new Intent(Profile_view.this, Member_Home.class);
-         Profile_view.this.startActivity(records);
+            case R.id.side_navigation_menu_item2:
+                Intent records = new Intent(Profile_view.this, Member_Home.class);
+                Profile_view.this.startActivity(records);
 
-         break;
+                break;
 
-    case R.id.side_navigation_menu_item3:
-         Intent help = new Intent(Profile_view.this, Profile_view.class);
-         Profile_view.this.startActivity(help);
+            case R.id.side_navigation_menu_item3:
+                Intent help = new Intent(Profile_view.this, com.ospinet.app.help.class);
+                Profile_view.this.startActivity(help);
 
-         break;
+                break;
+
+            case R.id.side_navigation_menu_item4:
+                Intent home = new Intent(Profile_view.this, PreMemberHome.class);
+                Profile_view.this.startActivity(home);
+
+                break;
+
+            case R.id.side_navigation_menu_item5:
+                Intent share = new Intent(Profile_view.this, ShareMainActivity.class);
+                Profile_view.this.startActivity(share);
+
+                break;
+
+            case R.id.side_navigation_menu_item6:
+                Intent search = new Intent(Profile_view.this, SearchMainActivity.class);
+                Profile_view.this.startActivity(search);
+
+                break;
 
             default:
-        return;
+                return;
         }
-       // finish();
+        // finish();
     }
 
     private void showActionBar() {

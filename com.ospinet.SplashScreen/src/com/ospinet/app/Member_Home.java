@@ -141,6 +141,7 @@ public class Member_Home extends Activity implements ISideNavigationCallback {
 					String birth_year = jsonChildNode.optString("birth_year");
 					String email = jsonChildNode.optString("email");
 					String profile_pic = jsonChildNode.optString("profile_pic");
+					String type = jsonChildNode.optString("type");
 					member m = new member();
 
 					m.setMemberId(Integer.parseInt(id));
@@ -153,6 +154,7 @@ public class Member_Home extends Activity implements ISideNavigationCallback {
 					m.setMemberName(name);
 					m.setEmail(email);
 					m.setProfile_Pic(profile_pic);
+					m.setType(type);
 					arrMember.add(m);
 					flag=1;
 				}

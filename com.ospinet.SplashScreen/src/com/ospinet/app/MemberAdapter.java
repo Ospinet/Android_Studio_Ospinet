@@ -1,6 +1,7 @@
 package com.ospinet.app;
 
 import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.androidquery.AQuery;
 import com.ospinet.app.R;
 
 public class MemberAdapter extends BaseAdapter {
@@ -57,7 +60,7 @@ public class MemberAdapter extends BaseAdapter {
 		  holder.birth_info = (TextView) convertView.findViewById(R.id.txtBirthInfo);
 		  holder.birth_month = (TextView) convertView.findViewById(R.id.txtBirthMonth);
 		  holder.birth_year = (TextView) convertView.findViewById(R.id.txtBirthYear);
-		  holder.profile_pic = (TextView) convertView.findViewById(R.id.txtProfilePic);
+		  holder.profile_pic = (RoundedImageView) convertView.findViewById(R.id.imgProfile);
 		   
 		   
 		   convertView.setTag(holder);
@@ -76,8 +79,17 @@ public class MemberAdapter extends BaseAdapter {
 		  holder.birth_info.setText(searchArrayList.get(position).getBirth_Info());
 		  holder.birth_month.setText(searchArrayList.get(position).getBirth_Month());
 		  holder.birth_year.setText(searchArrayList.get(position).getBirth_Year());
-		  holder.profile_pic.setText(searchArrayList.get(position).getProfile_Pic());
-		  
+		  AQuery androidAQuery = new AQuery(
+	                mContext);
+
+	        if(searchArrayList.get(position).getProfile_Pic() == null || searchArrayList.get(position).getProfile_Pic().equals("null") || searchArrayList.get(position).getProfile_Pic().equals("")){
+	            androidAQuery.id(holder.profile_pic).image(
+	                    "http://ospinet.com/assets/images/people/250/default_avatar_250x250.png", false, false,0, 0);   //"http://ospinet.com/assets/images/people/250/default_avatar_250x250.png"
+	        }else{
+	            androidAQuery.id(holder.profile_pic).image(
+	                    "http://ospinet.com/profile_pic/member_pic_250/" + searchArrayList.get(position).getProfile_Pic() +"_250." + searchArrayList.get(position).getType(), false, false,0, 0);   //"http://ospinet.com/profile_pic/member_pic_250/" + profile_image;
+	        }
+
 		  return convertView;
 
 	}
@@ -88,7 +100,7 @@ public class MemberAdapter extends BaseAdapter {
 	TextView gender;
 	TextView email;
 	TextView birth_info;
-	TextView profile_pic;
+	RoundedImageView profile_pic;
 	TextView birth_day;
 	TextView birth_month;
 	TextView birth_year;
