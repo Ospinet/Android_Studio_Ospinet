@@ -57,17 +57,16 @@
             android:hint="Your Friend's Email id"
             android:singleLine="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="28dp"
-            android:layout_toLeftOf="@+id/btnMale"
             android:layout_toRightOf="@+id/textTo"
             android:layout_marginLeft="26dp"
-            android:editable="false" />
+            android:editable="false"
+            android:layout_alignParentRight="true" />
 
         <ImageView
             android:id="@+id/btnMale"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@drawable/contacts_2"
             android:onClick="GetContacts"
             android:layout_alignBottom="@+id/ToEmail"

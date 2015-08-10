@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ospinet.app"
-    android:versionCode="5"
+    android:versionCode="6"
     android:versionName="1.0" >
 
     <uses-sdk
@@ -35,11 +35,11 @@
             <activity android:name="com.ospinet.app.RecordActivity" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.help" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Record_Details" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.Share" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Profile_view" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Profile_Edit" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.File_records_list" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.PreMemberHome" android:screenOrientation="portrait" ></activity>
-            <activity android:name="com.ospinet.app.Share" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.ContactsMainActivity" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Notifications_Details" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Friend_requests" android:screenOrientation="portrait" ></activity>

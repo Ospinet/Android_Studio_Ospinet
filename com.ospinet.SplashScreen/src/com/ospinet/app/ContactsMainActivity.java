@@ -1,11 +1,25 @@
 package com.ospinet.app;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.regex.Pattern;
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -13,36 +27,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
+
 import com.ospinet.app.AlphabetListAdapter.Item;
 import com.ospinet.app.AlphabetListAdapter.Row;
 import com.ospinet.app.AlphabetListAdapter.Section;
 
 import android.app.ListActivity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.Gravity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
+
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+
+
 
 public class ContactsMainActivity extends ListActivity {
-	String recId, memid,recDesc,recDate,recTitle,recTag,memfname,memlname,toemail,friends_ids;
-    
+    String recId, memid,recDesc,recDate,recTitle,recTag,memfname,memlname,toemail,friends_ids;
+
     private AlphabetListAdapter adapter = new AlphabetListAdapter();
     private GestureDetector mGestureDetector;
     private List<Object[]> alphabet = new ArrayList<Object[]>();
@@ -76,53 +79,53 @@ public class ContactsMainActivity extends ListActivity {
         setContentView(R.layout.list_alphabet);
         toemail = getIntent().getStringExtra("friends_email_ids");
         friends_ids = getIntent().getStringExtra("friends_ids");
-		recId = getIntent().getStringExtra("record_id");
+        recId = getIntent().getStringExtra("record_id");
         memfname = getIntent().getStringExtra("member_fname");
         memlname = getIntent().getStringExtra("member_lname");
-		memid = getIntent().getStringExtra("member_id");
+        memid = getIntent().getStringExtra("member_id");
         recDesc = getIntent().getStringExtra("record_desc");
         recDate = getIntent().getStringExtra("record_date");
         recTitle = getIntent().getStringExtra("record_title");
         recTag = getIntent().getStringExtra("record_tag");
-        
+
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
         dialog = new ProgressDialog(ContactsMainActivity.this);
         arrcontacts = new ArrayList<contact>();
         new Loadcontacts().execute();
-btnAdd = (Button) findViewById(R.id.btnAdd);
-btnAdd.setOnClickListener(new OnClickListener() {
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(new OnClickListener() {
 
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		String selectedEmails="";
-		String selectedIds="";
-		for(int i=0;i<checkedContacts.length;i++)
-		{
-			if(checkedContacts[i])
-			{
-				selectedEmails= selectedEmails + "[ " + arrcontacts.get(i).getemail()+" ], ";
-				selectedIds= selectedIds + arrcontacts.get(i).getfriend_id()+",";
-			}
-		}
-		Toast.makeText(ContactsMainActivity.this, selectedEmails, Toast.LENGTH_LONG).show();
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                String selectedEmails="";
+                String selectedIds="";
+                for(int i=0;i<checkedContacts.length;i++)
+                {
+                    if(checkedContacts[i])
+                    {
+                        selectedEmails= selectedEmails + "[ " + arrcontacts.get(i).getemail()+" ], ";
+                        selectedIds= selectedIds + arrcontacts.get(i).getfriend_id()+",";
+                    }
+                }
+                Toast.makeText(ContactsMainActivity.this, selectedEmails, Toast.LENGTH_LONG).show();
 
-        Intent i = new Intent(ContactsMainActivity.this, Share.class);
-        i.putExtra("record_id", recId);
-        i.putExtra("member_id", memid);
-        i.putExtra("record_desc", recDesc);
-        i.putExtra("record_date", recDate);
-        i.putExtra("record_title", recTitle);
-        i.putExtra("record_tag", recTag);
-        i.putExtra("member_fname", memfname);
-        i.putExtra("member_lname", memlname);
-        i.putExtra("friends_email_ids", selectedEmails);
-        i.putExtra("friends_ids", selectedIds);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        i.putExtra("EXIT", true);
-        ContactsMainActivity.this.startActivity(i);
-	}
-});
+                Intent i = new Intent(ContactsMainActivity.this, Share.class);
+                i.putExtra("record_id", recId);
+                i.putExtra("member_id", memid);
+                i.putExtra("record_desc", recDesc);
+                i.putExtra("record_date", recDate);
+                i.putExtra("record_title", recTitle);
+                i.putExtra("record_tag", recTag);
+                i.putExtra("member_fname", memfname);
+                i.putExtra("member_lname", memlname);
+                i.putExtra("friends_email_ids", selectedEmails);
+                i.putExtra("friends_ids", selectedIds);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.putExtra("EXIT", true);
+                ContactsMainActivity.this.startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -329,7 +332,7 @@ btnAdd.setOnClickListener(new OnClickListener() {
                 checkedContacts = new boolean[arrcontacts.size()];
                 for(int i =0;i<arrcontacts.size();i++)
                 {
-                	checkedContacts[i] = false;
+                    checkedContacts[i] = false;
                 }
                 adapter.setRows(rows);
                 setListAdapter(adapter);
@@ -341,20 +344,22 @@ btnAdd.setOnClickListener(new OnClickListener() {
             }
         }
     }
-@Override
-public void onBackPressed() {
-	// TODO Auto-generated method stub
-	  Intent i = new Intent(this, Share.class);
-      i.putExtra("record_id", recId);
-      i.putExtra("member_id", memid);
-      i.putExtra("record_desc", recDesc);
-      i.putExtra("record_date", recDate);
-      i.putExtra("record_title", recTitle);
-      i.putExtra("record_tag", recTag);
-      i.putExtra("member_fname", memfname);
-      i.putExtra("member_lname", memlname);
-      i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      i.putExtra("EXIT", true);
-      this.startActivity(i);
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        Intent i = new Intent(this, Share.class);
+        i.putExtra("record_id", recId);
+        i.putExtra("member_id", memid);
+        i.putExtra("record_desc", recDesc);
+        i.putExtra("record_date", recDate);
+        i.putExtra("record_title", recTitle);
+        i.putExtra("record_tag", recTag);
+        i.putExtra("member_fname", memfname);
+        i.putExtra("member_lname", memlname);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.putExtra("EXIT", true);
+        this.startActivity(i);
+    }
 }
-}
+
+
