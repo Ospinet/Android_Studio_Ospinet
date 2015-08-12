@@ -17,7 +17,6 @@
             android:id="@+id/outer"
             android:layout_width="fill_parent"
             android:layout_height="120dp"
-            android:layout_below="@+id/txtFriendreq"
             android:layout_alignParentLeft="true">
 
         <TextView

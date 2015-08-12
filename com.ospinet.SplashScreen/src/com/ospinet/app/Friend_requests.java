@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.devspark.sidenavigation.ISideNavigationCallback;
 import com.devspark.sidenavigation.SideNavigationView;
@@ -31,6 +33,7 @@ public class Friend_requests extends Activity implements ISideNavigationCallback
     ProgressDialog dialog;
     ListView FriendRequestList;
     TextView txtNoRec;
+    Button Confirm,Ignore;
     private SideNavigationView sideNavigationView;
     ArrayList<Friend_request_notification> req_notify;
     public static Friend_Request_NotificationAdapter rad;
@@ -157,7 +160,25 @@ public class Friend_requests extends Activity implements ISideNavigationCallback
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            Confirm = (Button) findViewById(R.id.btnConfirm);
+            Ignore = (Button) findViewById(R.id.btnIgnore);
+
+            Confirm.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Friend_requests.this, "CONFIRM", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            Ignore.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Friend_requests.this, "IGNORE", Toast.LENGTH_LONG).show();                }
+            });
         }
+
     }
 
     @Override

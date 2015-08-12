@@ -312,13 +312,15 @@ public class ContactsList extends Activity implements ISideNavigationCallback {
     actionBar.setDisplayShowTitleEnabled(false);
     actionBar.setCustomView(v);
     ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
-    ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);	
-    imgAdd.setOnClickListener(new OnClickListener() {
+    imgAdd.setVisibility(View.INVISIBLE);
+    ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+    ImageButton imgSearch_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
+    imgSearch_contacts.setOnClickListener(new OnClickListener() {
 	
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent = new Intent(ContactsList.this, MemberActivity.class);
+			Intent intent = new Intent(ContactsList.this, Search_Friends.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			intent.putExtra("EXIT", true);
 			ContactsList.this.startActivity(intent);
