@@ -49,7 +49,6 @@ public class Search_Friend_Adapter extends BaseAdapter {
 
             holder = new ViewHolder();
 
-
             holder.txtId = (TextView) convertView.findViewById(R.id.txtId);
             holder.txtFname = (TextView) convertView.findViewById(R.id.txtFname);
             holder.txtLname = (TextView) convertView.findViewById(R.id.txtLname);

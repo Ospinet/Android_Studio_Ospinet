@@ -5,13 +5,11 @@
     android:background="#FFFFFF"
     android:id="@+id/rel">
 
-   
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/lstselector"
-        android:layout_alignParentRight="true"
-        >/
+        android:layout_alignParentRight="true">
 
         <RelativeLayout
             android:id="@+id/outer"
@@ -40,6 +38,7 @@
             android:layout_alignTop="@+id/txtFname"
             android:layout_toRightOf="@+id/txtEmail"
             android:layout_marginLeft="15dp" />
+
         <TextView
             android:id="@+id/txtFname"
             android:layout_width="wrap_content"
@@ -52,6 +51,7 @@
             android:layout_marginTop="21dp"
             android:layout_toRightOf="@+id/imgProfile">
         </TextView>
+
         <TextView
             android:id="@+id/txtLname"
             android:layout_width="wrap_content"
@@ -64,6 +64,7 @@
             android:layout_alignTop="@+id/txtFname"
             android:layout_toRightOf="@+id/txtFname">
         </TextView>
+
         <TextView
             android:id="@+id/txtUser_id"
             android:layout_width="0dp"
@@ -74,8 +75,7 @@
             android:paddingTop="5dp"
             android:textColor="#000000"
             android:textSize="17dp"
-            android:text="user_id"
-            >
+            android:text="user_id">
         </TextView>
 
         <TextView
@@ -89,6 +89,7 @@
             android:text="type"
             android:layout_below="@+id/txtFname">
         </TextView>
+
         <Button
             android:id="@+id/btnConfirm"
             style="@drawable/button_custom"

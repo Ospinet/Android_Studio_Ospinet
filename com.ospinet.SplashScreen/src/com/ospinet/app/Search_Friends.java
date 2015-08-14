@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -31,14 +33,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Search_Friends extends Activity implements ISideNavigationCallback {
+public class Search_Friends extends Activity implements ISideNavigationCallback{
+    private SideNavigationView sideNavigationView;
     ProgressDialog dialog;
     ListView FriendsList;
     TextView txtNoRec;
     public static String search_string;
     public static EditText search_txt;
-    Button Confirm,Ignore;
-    private SideNavigationView sideNavigationView;
+
     ArrayList<Friend_search> friend_search;
     public static Search_Friend_Adapter rad;
     int flag;
@@ -51,20 +53,29 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
 
         setContentView(R.layout.search_friends);
         showActionBar();
-        FriendsList = (ExpandableListView) findViewById(R.id.FriendsList);
-        sideNavigationView = (SideNavigationView) findViewById(R.id.side_navigation_view);
-        sideNavigationView.setMenuItems(R.menu.side_navigation_menu);
-        sideNavigationView.setMenuClickCallback(this);
-        sideNavigationView.setMode(SideNavigationView.Mode.LEFT);
+        FriendsList = (ListView) findViewById(R.id.FriendsList);
 
         dialog = new ProgressDialog(Search_Friends.this);
         txtNoRec = (TextView) findViewById(R.id.txt_home_norec);
+        txtNoRec.setVisibility(View.INVISIBLE);
         search_txt = (EditText) findViewById(R.id.search);
-        search_string = search_txt.getText().toString();
 
         //super.onCreate(savedInstanceState);
         friend_search = new ArrayList<Friend_search>();
-        new search_friends().execute();
+        search_txt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))) {
+                    search_string = search_txt.getText().toString();
+                    new search_friends().execute();
+                    return false;
+                } else {
+                    txtNoRec.setVisibility(View.VISIBLE);
+                    return false;
+                }
+            }
+        });
+
     }
 
     public class search_friends extends AsyncTask<String, String, String> {
@@ -80,7 +91,7 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
         @Override
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
-            String NotifyString = "";
+            String SearchString = "";
             try {
                 ArrayList<NameValuePair> friend_search = new ArrayList<NameValuePair>();
                 SharedPreferences myPrefs = Search_Friends.this
@@ -91,15 +102,15 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
                 String response = CustomHttpClient
                         .executeHttpPost("http://ospinet.com/app_ws/android_app_fun/search_friends",
                                 friend_search);
-                NotifyString = response.toString();
+                SearchString = response.toString();
             } catch (Exception io) {
 
             }
-            return NotifyString;
+            return SearchString;
 
         }
         @Override
-        protected void onPostExecute(String NotifyString) {
+        protected void onPostExecute(String SearchString) {
             if (dialog.isShowing())
                 dialog.dismiss();
             JSONObject jsonResponse = null;
@@ -113,10 +124,9 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
                 String ns = "";
                 String uid = "";
                 String email = "";
-                jsonResponse = new JSONObject(NotifyString);
+                jsonResponse = new JSONObject(SearchString);
                 int flag=0;
-                JSONArray jsonMainNode = jsonResponse
-                        .optJSONArray("result");
+                JSONArray jsonMainNode = jsonResponse                        .optJSONArray("result");
                 if(jsonMainNode!=null)
                 {
                     for (int i = 0; i < jsonMainNode.length(); i++) {
@@ -176,23 +186,6 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            Confirm = (Button) findViewById(R.id.btnConfirm);
-            Ignore = (Button) findViewById(R.id.btnIgnore);
-
-            Confirm.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(Search_Friends.this, "CONFIRM", Toast.LENGTH_LONG).show();
-                }
-            });
-
-            Ignore.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(Search_Friends.this, "IGNORE", Toast.LENGTH_LONG).show();                }
-            });
         }
 
     }
@@ -223,7 +216,7 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(Search_Friends.this,PreMemberHome.class);
+                Intent i = new Intent(Search_Friends.this, PreMemberHome.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(i);
             }
@@ -239,7 +232,6 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
 
             }
         });
-
     }
     @Override
     public void onSideNavigationItemClick(int itemId) {
@@ -289,5 +281,4 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
         }
         // finish();
     }
-
 }
