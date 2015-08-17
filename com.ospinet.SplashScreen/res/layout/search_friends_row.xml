@@ -10,15 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/lstselector"
-        android:layout_alignParentRight="true"
-        >/
+        android:layout_alignParentRight="true">/
 
         <RelativeLayout
             android:id="@+id/outer"
-            android:layout_width="fill_parent"
-            android:layout_height="120dp"
-            android:layout_below="@+id/txtFriendreq"
-            android:layout_alignParentLeft="true">
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/search_contacts"
+            android:layout_toStartOf="@+id/search_contacts">
 
         <TextView
             android:id="@+id/txtId"
@@ -40,18 +40,21 @@
             android:src="@drawable/doc"
             android:layout_alignTop="@+id/txtFname"
             android:layout_toRightOf="@+id/txtType"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp" />
         <TextView
             android:id="@+id/txtFname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:textColor="#000000"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:text="Fname"
             android:paddingTop="10dp"
-            android:layout_marginTop="21dp"
-            android:layout_toRightOf="@+id/imgProfile">
+            android:layout_below="@+id/txtId"
+            android:layout_toRightOf="@+id/imgProfile"
+            android:layout_toEndOf="@+id/imgProfile"
+            android:layout_marginTop="5dp">
         </TextView>
         <TextView
             android:id="@+id/txtLname"
@@ -59,11 +62,13 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:textColor="#000000"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:text="Lname"
             android:paddingTop="10dp"
-            android:layout_alignTop="@+id/txtFname"
-            android:layout_toRightOf="@+id/txtFname">
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/txtFname"
+            android:layout_toEndOf="@+id/txtFname"
+            android:layout_marginTop="5dp">
         </TextView>
         <TextView
             android:id="@+id/txtUid"
@@ -101,8 +106,7 @@
                 android:paddingTop="5dp"
                 android:textColor="#000000"
                 android:textSize="17dp"
-                android:text="user_id"
-                >
+                android:text="user_id">
             </TextView>
         <TextView
             android:id="@+id/txtType"
@@ -122,14 +126,28 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:text="Email"
                 android:paddingTop="10dp"
-                android:layout_below="@+id/txtType"
-                android:layout_toRightOf="@+id/imgProfile">
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/imgProfile"
+                android:layout_toEndOf="@+id/imgProfile">
             </TextView>
 
+
         </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/Send_request"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:background="@drawable/add_user"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp" />
+
 
     </RelativeLayout>
 

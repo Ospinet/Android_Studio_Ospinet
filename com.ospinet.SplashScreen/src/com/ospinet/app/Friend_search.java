@@ -68,14 +68,14 @@ public class Friend_search {
     }
 
     public String getlogin_status() {
-        return uid;
+        return login_status;
     }
     public void setlogin_status(String login_status) {
         this.login_status = login_status;
     }
 
     public String getemail() {
-        return uid;
+        return email;
     }
     public void setemail(String email) {
         this.email = email;
