@@ -38,6 +38,7 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
     ProgressDialog dialog;
     ListView FriendsList;
     TextView txtNoRec;
+    ImageButton Send;
     public static String search_string;
     public static String to_userid;
     public static String notification;
@@ -57,7 +58,6 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
         setContentView(R.layout.search_friends);
         showActionBar();
         FriendsList = (ListView) findViewById(R.id.FriendsList);
-        TextView send = (TextView) findViewById(R.id.Send_request);
         dialog = new ProgressDialog(Search_Friends.this);
         txtNoRec = (TextView) findViewById(R.id.txt_home_norec);
         txtNoRec.setVisibility(View.INVISIBLE);
@@ -79,41 +79,8 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
             }
         });
 
-   /*     send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new send_request().execute();
-                Toast.makeText(Search_Friends.this, "Friend request send", Toast.LENGTH_LONG).show();
-            }
-        }); */
-
     }
 
-
-public class send_request extends AsyncTask<String, String, String> {
-
-    @Override
-    protected String doInBackground(String... params) {
-        // TODO Auto-generated method stub
-        String SearchString = "";
-        try {
-            ArrayList<NameValuePair> send = new ArrayList<NameValuePair>();
-            SharedPreferences myPrefs = Search_Friends.this
-                    .getSharedPreferences("remember", Context.MODE_PRIVATE);
-            String userId = myPrefs.getString("userid", null);
-            send.add(new BasicNameValuePair("user_id",userId));
-            send.add(new BasicNameValuePair("to_userid",to_userid));
-            String response = CustomHttpClient
-                    .executeHttpPost("http://ospinet.com/app_ws/android_app_fun/send_friend_request",
-                            send);
-            SearchString = response.toString();
-        } catch (Exception io) {
-
-        }
-        return SearchString;
-    }
-}
     public class search_friends extends AsyncTask<String, String, String> {
 
         @Override
@@ -139,6 +106,7 @@ public class send_request extends AsyncTask<String, String, String> {
                         .executeHttpPost("http://ospinet.com/app_ws/android_app_fun/search_friends",
                                 friend_search);
                 SearchString = response.toString();
+
             } catch (Exception io) {
 
             }
@@ -160,23 +128,24 @@ public class send_request extends AsyncTask<String, String, String> {
                 String ns = "";
                 String uid = "";
                 String email = "";
+                String send_request = "";
                 jsonResponse = new JSONObject(SearchString);
                 int flag=0;
                 JSONArray jsonMainNode = jsonResponse.optJSONArray("result");
                 friend_search.clear();
-                for (int i = 0; i < jsonMainNode.length(); i++) {
+                    for (int i = 0; i < jsonMainNode.length(); i++) {
                         JSONArray jArray = jsonMainNode.getJSONArray(i);
-                        for(int j=0;j<jArray.length();j++)
-                        {
+                        for (int j = 0; j < jArray.length(); j++) {
                             JSONObject jsonChildNode = jArray.getJSONObject(j);
 
                             id = jsonChildNode.optString("id");
                             type = jsonChildNode.optString("type");
-                            profile =  jsonChildNode.optString("profile_pic");
+                            profile = jsonChildNode.optString("profile_pic");
                             fname = jsonChildNode.optString("fname");
                             lname = jsonChildNode.optString("lname");
                             login_status = jsonChildNode.optString("login_status");
                             ns = jsonChildNode.optString("ns");
+                            send_request = jsonChildNode.optString("ns");
                             uid = jsonChildNode.optString("uid");
                             email = jsonChildNode.optString("email");
                             Friend_search r = new Friend_search();
@@ -190,33 +159,31 @@ public class send_request extends AsyncTask<String, String, String> {
                             r.setemail(email);
                             r.setlogin_status(login_status);
                             r.setns(ns);
+                            r.setsend_request(send_request);
                             r.setuid(uid);
                             friend_search.add(r);
-                            flag=1;
+                            flag = 1;
                         }
 
-                    if(flag==0)
-                    {
-                        txtNoRec.setVisibility(View.VISIBLE);
-                        FriendsList.setVisibility(View.GONE);
+                        if (flag == 0) {
+                            txtNoRec.setVisibility(View.VISIBLE);
+                            FriendsList.setVisibility(View.GONE);
+                        } else {
+                            txtNoRec.setVisibility(View.GONE);
+                            FriendsList.setVisibility(View.VISIBLE);
+                        }
                     }
-                    else
-                    {
-                        txtNoRec.setVisibility(View.GONE);
-                        FriendsList.setVisibility(View.VISIBLE);
-                    }
-                }
+
                 rad = new Search_Friend_Adapter(Search_Friends.this,
                         friend_search);
 
-                FriendsList.setAdapter(rad);
+                    FriendsList.setAdapter(rad);
 
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
-
     }
 
     @Override

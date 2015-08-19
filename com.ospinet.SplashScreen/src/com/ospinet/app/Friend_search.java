@@ -12,6 +12,7 @@ public class Friend_search {
     private String profile;
     private String fname;
     private String lname;
+    private String send_request;
 
     public String getfname() {
         return fname;
@@ -79,5 +80,12 @@ public class Friend_search {
     }
     public void setemail(String email) {
         this.email = email;
+    }
+
+    public String getsend_request() {
+        return send_request;
+    }
+    public void setsend_request(String send_request) {
+        this.send_request = send_request;
     }
 }

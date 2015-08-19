@@ -17,8 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/search_contacts"
-            android:layout_toStartOf="@+id/search_contacts">
+            android:layout_toStartOf="@+id/Send_request"
+            android:layout_toLeftOf="@+id/Send_request">
 
         <TextView
             android:id="@+id/txtId"
@@ -139,9 +139,8 @@
 
         <ImageButton
             android:id="@+id/Send_request"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:background="@drawable/add_user"
+            android:layout_width="25dp"
+            android:layout_height="19dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
