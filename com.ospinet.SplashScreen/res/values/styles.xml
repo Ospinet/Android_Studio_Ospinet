@@ -1,6 +1,10 @@
 <resources>
-<style name="MyApp.Theme.Light" parent="@android:style/Theme.Light">
-        <item name="android:textColorPrimaryInverse">@android:color/primary_text_light</item>
+    <style name="MyCustomTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
     </style>
-    <style name="AppTheme" parent="android:Theme.Light" />
+
+    <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#1BA0A2</item>
+    </style>
+
 </resources>

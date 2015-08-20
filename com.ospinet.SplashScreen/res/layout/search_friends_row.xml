@@ -5,20 +5,14 @@
     android:background="#FFFFFF"
     android:id="@+id/rel">
 
-   
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/lstselector"
-        android:layout_alignParentRight="true">/
 
         <RelativeLayout
             android:id="@+id/outer"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
-            android:layout_toStartOf="@+id/Send_request"
-            android:layout_toLeftOf="@+id/Send_request">
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
         <TextView
             android:id="@+id/txtId"
@@ -133,21 +127,16 @@
                 android:layout_toRightOf="@+id/imgProfile"
                 android:layout_toEndOf="@+id/imgProfile">
             </TextView>
-
-
+            
         </RelativeLayout>
 
         <ImageButton
             android:id="@+id/Send_request"
             android:layout_width="25dp"
             android:layout_height="19dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp" />
-
-
-    </RelativeLayout>
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp" />
 
 </RelativeLayout>

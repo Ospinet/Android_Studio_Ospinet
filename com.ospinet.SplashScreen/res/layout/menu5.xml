@@ -100,6 +100,8 @@
             android:drawablePadding="10dp"
             android:paddingLeft="15dp"
             android:hint="search..."
+            android:background="#FFFFFF"
+            android:textColorHint="#000000"
             android:focusable="true"
             android:imeOptions="actionDone"
             android:layout_toRightOf="@+id/imageBack"

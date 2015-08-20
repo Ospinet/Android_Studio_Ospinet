@@ -40,8 +40,6 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
     TextView txtNoRec;
     ImageButton Send;
     public static String search_string;
-    public static String to_userid;
-    public static String notification;
     public static EditText search_txt;
 
     ArrayList<Friend_search> friend_search;
@@ -149,8 +147,6 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
                             uid = jsonChildNode.optString("uid");
                             email = jsonChildNode.optString("email");
                             Friend_search r = new Friend_search();
-                            to_userid = id;
-                            notification = ns;
                             r.settype(type);
                             r.setprofile(profile);
                             r.setid(id);

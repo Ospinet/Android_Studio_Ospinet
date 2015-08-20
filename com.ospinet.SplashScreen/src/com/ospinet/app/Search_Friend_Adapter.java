@@ -24,6 +24,7 @@ public class Search_Friend_Adapter extends BaseAdapter {
     private static ArrayList<Friend_search> friend_search;
     private LayoutInflater mInflater;
     private Context mContext;
+    public static  String to_userid;
 
     public Search_Friend_Adapter(Context context, ArrayList<Friend_search> results) {
         friend_search = results;
@@ -50,9 +51,9 @@ public class Search_Friend_Adapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        ViewHolder holder;
+        final ViewHolder holder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.search_friends_row, null);
 
@@ -87,7 +88,6 @@ public class Search_Friend_Adapter extends BaseAdapter {
         AQuery androidAQuery = new AQuery(
                 mContext);
 
-        String to_userid = friend_search.get(position).getid();
         if(friend_search.get(position).getsend_request() == null || friend_search.get(position).getsend_request().equals("null")){
             androidAQuery.id(holder.Send_request).image(R.drawable.add_user);
             holder.Send_request.setOnClickListener(new View.OnClickListener()
@@ -99,20 +99,22 @@ public class Search_Friend_Adapter extends BaseAdapter {
                             mContext);
 
                     // set title
-                    alertDialogBuilder.setTitle("Ospinet Confirmation!");
-
+                    alertDialogBuilder.setTitle("Confirmation!");
+                    alertDialogBuilder.setIcon(R.drawable.applogo);
                     // set dialog message
                     alertDialogBuilder
-                            .setMessage("Click Yes, if you are sure to send request.")
+                            .setMessage("You are sending friend request to " + friend_search.get(position).getfname() + " " + friend_search.get(position).getlname())
                             .setCancelable(false)
                             .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,int id) {
                                     // if this button is clicked, close
                                     // current activity
+                                    to_userid = friend_search.get(position).getid();
+                               //     new send_request().execute();
                                 }
                             })
-                            .setNegativeButton("No",new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,int id) {
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     // if this button is clicked, just close
                                     // the dialog box and do nothing
                                     dialog.cancel();
@@ -152,31 +154,31 @@ public class Search_Friend_Adapter extends BaseAdapter {
         TextView txtLogin_status;
         TextView txtUid;
         ImageButton Send_request;
-        String to_userid;
         RoundedImageView txtProfile;
     }
-    public class send_request extends AsyncTask<String, String, String> {
+/*    public class send_request extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
             // TODO Auto-generated method stub
-            String SearchString = "";
+            String SendRequest = "";
             try {
                 ArrayList<NameValuePair> send = new ArrayList<NameValuePair>();
                 SharedPreferences myPrefs = Search_Friend_Adapter.this
-                        .getSharedPreferences("remember", Context.MODE_PRIVATE);
+                        getSharedPreferences("remember", Context.MODE_PRIVATE);
                 String userId = myPrefs.getString("userid", null);
                 send.add(new BasicNameValuePair("user_id",userId));
                 send.add(new BasicNameValuePair("to_userid",to_userid));
                 String response = CustomHttpClient
                         .executeHttpPost("http://ospinet.com/app_ws/android_app_fun/send_friend_request",
                                 send);
-                SearchString = response.toString();
+                SendRequest = response.toString();
             } catch (Exception io) {
 
             }
-            return SearchString;
+            return SendRequest;
         }
-    }
+    } */
+
 
 }
