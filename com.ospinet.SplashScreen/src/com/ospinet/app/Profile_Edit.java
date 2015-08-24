@@ -638,6 +638,10 @@ public class Profile_Edit extends Activity implements
 																		// before
 		imgAdd.setVisibility(View.INVISIBLE);
 		ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+		ImageButton search_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
+		search_contacts.setVisibility(View.INVISIBLE);
+		ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
+		ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
 		imgAdd.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -659,6 +663,31 @@ public class Profile_Edit extends Activity implements
 				sideNavigationView.toggleMenu();
 				RelativeLayout rel = (RelativeLayout) findViewById(R.id.rel);
 				rel.bringChildToFront(sideNavigationView);
+
+			}
+		});
+		imgfriend.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(Profile_Edit.this, Friend_requests.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.putExtra("EXIT", true);
+				Profile_Edit.this.startActivity(intent);
+
+			}
+		});
+
+		imgbell.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(Profile_Edit.this, Notifications_Details.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.putExtra("EXIT", true);
+				Profile_Edit.this.startActivity(intent);
 
 			}
 		});

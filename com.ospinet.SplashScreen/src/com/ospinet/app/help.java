@@ -150,7 +150,11 @@ public class help extends  Activity implements ISideNavigationCallback {
     actionBar.setDisplayShowTitleEnabled(false);
     actionBar.setCustomView(v);
     ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
-    ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);	
+    ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+    ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
+    ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
+    ImageButton search_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
+    search_contacts.setVisibility(View.INVISIBLE);
     imgAdd.setOnClickListener(new OnClickListener() {
 
     	@Override
@@ -174,6 +178,31 @@ public class help extends  Activity implements ISideNavigationCallback {
             
     	}
     });
+        imgfriend.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(help.this, Friend_requests.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                help.this.startActivity(intent);
+
+            }
+        });
+
+        imgbell.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(help.this, Notifications_Details.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                help.this.startActivity(intent);
+
+            }
+        });
     TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
     friend_count.setVisibility(View.INVISIBLE);
 

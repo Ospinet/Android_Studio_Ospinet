@@ -1,16 +1,5 @@
 package com.ospinet.app;
 
-import java.util.ArrayList;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
-import com.devspark.sidenavigation.ISideNavigationCallback;
-import com.devspark.sidenavigation.SideNavigationView;
-import com.devspark.sidenavigation.SideNavigationView.Mode;
-import com.ospinet.app.R;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -23,8 +12,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -37,9 +26,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.devspark.sidenavigation.ISideNavigationCallback;
+import com.devspark.sidenavigation.SideNavigationView;
+import com.devspark.sidenavigation.SideNavigationView.Mode;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class MemberActivity extends Activity implements ISideNavigationCallback {
+	String memid;
 	EditText edtFname, edtLname, edtEmail, edtAge;
-	Button btnAdd, btnCancel, btnDob, btnAge, btnUnborn;
+	Button btnAdd, btnCancel,  btnDob, btnAge, btnUnborn;
 	ImageView btnMale, btnFemale;
 	static ProgressDialog dialogP;
 	Spinner spYear, spMonth, spDay;
@@ -47,7 +49,9 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 	String gender = "";
 	String arr2[];
 	int res = 0;
+	String id, fname, lname, age, gen, email;
 	private SideNavigationView sideNavigationView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -55,15 +59,16 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 
-		setContentView(R.layout.member_layout);
+		setContentView(R.layout.member_edit);
 		showActionBar();
         new GetNotificationsCount().execute();
         new GetFriendRequestCount().execute();
-		 sideNavigationView = (SideNavigationView) findViewById(R.id.side_navigation_view);
-	     sideNavigationView.setMenuItems(R.menu.side_navigation_menu);
-	     sideNavigationView.setMenuClickCallback(this);
-	     sideNavigationView.setMode(Mode.LEFT);
+	    sideNavigationView = (SideNavigationView) findViewById(R.id.side_navigation_view);
+        sideNavigationView.setMenuItems(R.menu.side_navigation_menu);
+        sideNavigationView.setMenuClickCallback(this);
+        sideNavigationView.setMode(Mode.LEFT);
 
+		memid = getIntent().getStringExtra("member_id");
 		dialogP = new ProgressDialog(MemberActivity.this);
 		edtFname = (EditText) findViewById(R.id.edtFname);
 		edtLname = (EditText) findViewById(R.id.edtlname);
@@ -81,7 +86,8 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 		spYear = (Spinner) findViewById(R.id.spinYear);
 		spMonth = (Spinner) findViewById(R.id.spinMonth);
 		spDay = (Spinner) findViewById(R.id.spinDay);
-
+///////////////////// get member details here
+		
 		spYear.setVisibility(View.INVISIBLE);
 		spMonth.setVisibility(View.INVISIBLE);
 		spDay.setVisibility(View.INVISIBLE);
@@ -93,6 +99,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 		adapYear.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spMonth.setEnabled(false);
 		spDay.setEnabled(false);
+		
 		spYear.setAdapter(adapYear);
 		spYear.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -198,8 +205,9 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 
 			}
 		});
+new GetMemberDetails().execute();
 	}
-
+	
 	public int CalculateLeapYear(String yr) {
 		int res = 0;
 		try {
@@ -219,7 +227,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 		return res;
 	}
 
-	public void add_member(View v) {
+	public void update_member(View v) {
 		if (edtFname.getText().toString().equals("")) {
 			edtFname.requestFocus();
 			Toast.makeText(MemberActivity.this, "Please enter First name",
@@ -270,7 +278,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 					Toast.LENGTH_LONG).show();
 			return;
 		}
-		new AddMember().execute();
+		new UpdateMember().execute();
 	}
 
 	public void cancel(View v) {
@@ -290,8 +298,8 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
         btnAge.setTextColor(Color.WHITE);
         btnDob.setTextColor(Color.WHITE);
         btnUnborn.setTextColor(Color.WHITE);
-      //  btnMale.setTextColor(Color.WHITE);
-       // btnFemale.setTextColor(Color.WHITE);
+        //btnMale.setTextColor(Color.WHITE);
+        //btnFemale.setTextColor(Color.WHITE);
 
 		// reset visibility
 		spYear.setVisibility(View.INVISIBLE);
@@ -299,9 +307,15 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 		spDay.setVisibility(View.INVISIBLE);
 		edtAge.setVisibility(View.INVISIBLE);
 
+		Intent i = new Intent(MemberActivity.this, Member_Home.class);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		i.putExtra("EXIT", true);
+		this.startActivity(i);
+		//finish();
+		
 	}
 
-	public class AddMember extends AsyncTask<String, String, String> {
+	public class UpdateMember extends AsyncTask<String, String, String> {
 
 		@Override
 		protected void onPreExecute() {
@@ -344,7 +358,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 				String userid = myPrefs.getString("userid", null);
 				ArrayList<NameValuePair> loginParam = new ArrayList<NameValuePair>();
 				loginParam.add(new BasicNameValuePair("userid", userid));
-
+				loginParam.add(new BasicNameValuePair("member_id", memid));
 				loginParam.add(new BasicNameValuePair("fname", fname));
 				loginParam.add(new BasicNameValuePair("lname", lname));
 				loginParam.add(new BasicNameValuePair("gender", gender));
@@ -379,7 +393,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 				String jsonMainNode = jsonResponse.getString("success");
 				if (jsonMainNode.equals("1")) {
 					Toast.makeText(MemberActivity.this,
-							"Member added successfully", Toast.LENGTH_LONG)
+							"Member updated successfully", Toast.LENGTH_LONG)
 							.show();
 					Intent i = new Intent(MemberActivity.this,
 							Member_Home.class);
@@ -387,7 +401,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 					i.putExtra("EXIT", true);
 					
 					MemberActivity.this.startActivity(i);
-				//	finish();
+					finish();
 				} else {
 					Toast.makeText(MemberActivity.this,
 							"Some problem. Please try again.",
@@ -402,10 +416,10 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 
 	public void maleClicked(View v) {
 		try {
-            btnMale.setBackgroundResource(R.drawable.malepressed);
-            //btnMale.setTextColor(Color.WHITE);
-            //btnFemale.setTextColor(Color.WHITE);
+			btnMale.setBackgroundResource(R.drawable.malepressed);
+           // btnMale.setTextColor(Color.WHITE);
 			btnFemale.setBackgroundResource(R.drawable.femaleselector);
+            //btnFemale.setTextColor(Color.WHITE);
 			gender = "male";
 		} catch (Exception ex) {
 
@@ -415,9 +429,9 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 	public void femaleClicked(View v) {
 		try {
 			btnFemale.setBackgroundResource(R.drawable.femalepressed);
-           // btnMale.setTextColor(Color.WHITE);
-            //btnFemale.setTextColor(Color.WHITE);
+         //   btnFemale.setTextColor(Color.WHITE);
 			btnMale.setBackgroundResource(R.drawable.maleselector);
+         //   btnMale.setTextColor(Color.WHITE);
 			gender = "female";
 		} catch (Exception ex) {
 
@@ -483,6 +497,241 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 
 		}
 	}
+
+	public class GetMemberDetails extends AsyncTask<String, String, String> {
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			dialogP.setMessage("Please Wait..");
+			dialogP.show();
+			dialogP.setCancelable(false);
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			String retstring = "";
+			try {
+
+				String response = CustomHttpClient
+						.executeHttpGet("http://ospinet.com/app_ws/android_app_fun/get_members_details?member_id="
+								+ memid);
+				retstring = response.toString();
+
+			} catch (Exception io) {
+
+			}
+			return retstring;
+
+		}
+
+		@Override
+		protected void onPostExecute(String retstring) {
+			if (dialogP.isShowing())
+				dialogP.dismiss();
+			JSONObject jsonResponse = null;
+			try {
+				jsonResponse = new JSONObject(retstring);
+
+				JSONArray jsonMainNode = jsonResponse
+						.optJSONArray("member_detail");
+				for (int i = 0; i < jsonMainNode.length(); i++) {
+					JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
+					id = jsonChildNode.optString("id");
+					fname = jsonChildNode.optString("fname");
+					lname = jsonChildNode.optString("lname");
+					gen = jsonChildNode.optString("gender");
+					age = jsonChildNode.optString("age");
+					email = jsonChildNode.optString("email");
+
+					// code to set text and button
+					edtFname.setText(fname);
+					edtLname.setText(lname);
+					edtEmail.setText(email);
+					edtAge.setText(age);
+					if (gen.toLowerCase().equals("male")) {
+						btnMale.setBackgroundResource(R.drawable.malepressed);
+                        //btnMale.setTextColor(Color.WHITE);
+						btnFemale.setBackgroundResource(R.drawable.femaleselector);
+                        //btnFemale.setTextColor(Color.WHITE);
+						gender = "male";
+
+					} else {
+						btnFemale.setBackgroundResource(R.drawable.femalepressed);
+                    //    btnFemale.setTextColor(Color.WHITE);
+						btnMale.setBackgroundResource(R.drawable.maleselector);
+                      //  btnMale.setTextColor(Color.WHITE);
+						gender = "female";
+					}
+					birth_info = "age";
+					btnAge.setBackgroundResource(R.drawable.button_custom_two);
+                    btnAge.setTextColor(Color.WHITE);
+					edtAge.setVisibility(View.VISIBLE);
+				}
+
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		Intent i = new Intent(MemberActivity.this, Member_Home.class);
+		this.startActivity(i);
+		finish();
+	}
+
+	private void showActionBar() {
+        LayoutInflater inflator = (LayoutInflater) this
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View v = inflator.inflate(R.layout.menu1, null);
+    ActionBar actionBar = getActionBar();
+    actionBar.setDisplayHomeAsUpEnabled(false);
+    actionBar.setDisplayShowHomeEnabled(false);
+    actionBar.setDisplayShowCustomEnabled(true);
+    actionBar.setDisplayShowTitleEnabled(false);
+    actionBar.setCustomView(v);
+		ImageButton search_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
+		search_contacts.setVisibility(View.INVISIBLE);
+    ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
+        imgAdd.setVisibility(View.INVISIBLE);
+        ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+        ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
+        ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
+    imgAdd.setOnClickListener(new OnClickListener() {
+	
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent intent = new Intent(MemberActivity.this, MemberActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("EXIT", true);
+			MemberActivity.this.startActivity(intent);
+            
+		}
+	});
+    imgMenu.setOnClickListener(new OnClickListener() {
+    	
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			 sideNavigationView.toggleMenu();
+			 RelativeLayout rel = (RelativeLayout) findViewById(R.id.rel);
+             rel.bringChildToFront(sideNavigationView);
+            
+		}
+	});
+        imgfriend.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(MemberActivity.this, Friend_requests.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                MemberActivity.this.startActivity(intent);
+
+            }
+        });
+
+        imgbell.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(MemberActivity.this, Notifications_Details.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                MemberActivity.this.startActivity(intent);
+
+            }
+        });
+        TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
+        friend_count.setVisibility(View.INVISIBLE);
+
+        TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
+        notification_count.setVisibility(View.INVISIBLE);
+
+	ImageButton imgLogo = (ImageButton) v.findViewById(R.id.logo);
+	TextView txtLogoName = (TextView) v.findViewById(R.id.logoName);
+	
+	imgLogo.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent i = new Intent(MemberActivity.this,PreMemberHome.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			startActivity(i);
+		}
+	});
+	txtLogoName.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent i = new Intent(MemberActivity.this,PreMemberHome.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			startActivity(i);
+		}
+	});
+	
+	
+	
+	}
+	
+	
+	@Override
+    public void onSideNavigationItemClick(int itemId) {
+        switch(itemId)
+        {
+            case R.id.side_navigation_menu_item1:
+                Intent i = new Intent(MemberActivity.this, LoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.putExtra("EXIT", true);
+
+                MemberActivity.this.startActivity(i);
+
+                break;
+
+            case R.id.side_navigation_menu_item2:
+                Intent records = new Intent(MemberActivity.this, Member_Home.class);
+                MemberActivity.this.startActivity(records);
+
+                break;
+
+            case R.id.side_navigation_menu_item3:
+                Intent help = new Intent(MemberActivity.this, help.class);
+                MemberActivity.this.startActivity(help);
+
+                break;
+
+            case R.id.side_navigation_menu_item4:
+                Intent home = new Intent(MemberActivity.this, PreMemberHome.class);
+                MemberActivity.this.startActivity(home);
+
+                break;
+
+            case R.id.side_navigation_menu_item5:
+                Intent share = new Intent(MemberActivity.this, ShareMainActivity.class);
+                MemberActivity.this.startActivity(share);
+
+                break;
+
+            case R.id.side_navigation_menu_item6:
+                Intent search = new Intent(MemberActivity.this, SearchMainActivity.class);
+                MemberActivity.this.startActivity(search);
+
+                break;
+
+            default:
+                return;
+        }
+        // finish();
+    }
     public class GetFriendRequestCount extends AsyncTask<String, String, String> {
         protected String doInBackground(String... params) {
 
@@ -507,7 +756,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
         protected void onPostExecute(String Friend_Request_count) {
             if(!Friend_Request_count.replace("\n","").equals("0")){
                 TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
-                friend_count.setVisibility(View.INVISIBLE);
+                friend_count.setVisibility(View.VISIBLE);
                 friend_count.setText(Friend_Request_count);
             }
         }
@@ -542,125 +791,8 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
                 notification_count.setText(Count);
             }
         }
+
     }
-@Override
-public void onBackPressed() {
-Intent i = new Intent(MemberActivity.this,PreMemberHome.class);
-this.startActivity(i);
-finish();
+
 }
 
-private void showActionBar() {
-    LayoutInflater inflator = (LayoutInflater) this
-        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-View v = inflator.inflate(R.layout.menu1, null);
-ActionBar actionBar = getActionBar();
-actionBar.setDisplayHomeAsUpEnabled(false);
-actionBar.setDisplayShowHomeEnabled (false);
-actionBar.setDisplayShowCustomEnabled(true);
-actionBar.setDisplayShowTitleEnabled(false);
-actionBar.setCustomView(v);
-ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
-imgAdd.setVisibility(View.INVISIBLE);
-ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);	
-imgAdd.setOnClickListener(new OnClickListener() {
-
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		Intent intent = new Intent(MemberActivity.this, MemberActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		intent.putExtra("EXIT", true);
-		MemberActivity.this.startActivity(intent);
-        
-	}
-});
-imgMenu.setOnClickListener(new OnClickListener() {
-	
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		 sideNavigationView.toggleMenu();
-		 RelativeLayout rel = (RelativeLayout) findViewById(R.id.rel);
-         rel.bringChildToFront(sideNavigationView);
-        
-	}
-});
-    TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
-    friend_count.setVisibility(View.INVISIBLE);
-
-    TextView notification_count = (TextView) findViewById(R.id.actionbar_notifcation_textview2);
-    notification_count.setVisibility(View.INVISIBLE);
-
-ImageButton imgLogo = (ImageButton) v.findViewById(R.id.logo);
-TextView txtLogoName = (TextView) v.findViewById(R.id.logoName);
-
-imgLogo.setOnClickListener(new OnClickListener() {
-	
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		Intent i = new Intent(MemberActivity.this,PreMemberHome.class);
-		i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-		startActivity(i);
-	}
-});
-txtLogoName.setOnClickListener(new OnClickListener() {
-	
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		Intent i = new Intent(MemberActivity.this,PreMemberHome.class);
-		i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-		startActivity(i);
-	}
-});
-}
-    public void onSideNavigationItemClick(int itemId) {
-        switch(itemId)
-        {
-            case R.id.side_navigation_menu_item1:
-                Intent i = new Intent(MemberActivity.this, LoginActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.putExtra("EXIT", true);
-
-                MemberActivity.this.startActivity(i);
-
-                break;
-
-            case R.id.side_navigation_menu_item2:
-                Intent records = new Intent(MemberActivity.this, ContactsList.class);
-                MemberActivity.this.startActivity(records);
-
-                break;
-
-            case R.id.side_navigation_menu_item3:
-                Intent help = new Intent(MemberActivity.this, help.class);
-                MemberActivity.this.startActivity(help);
-
-                break;
-
-            case R.id.side_navigation_menu_item4:
-                Intent home = new Intent(MemberActivity.this, PreMemberHome.class);
-                MemberActivity.this.startActivity(home);
-
-                break;
-
-            case R.id.side_navigation_menu_item5:
-                Intent share = new Intent(MemberActivity.this, ShareMainActivity.class);
-                MemberActivity.this.startActivity(share);
-
-                break;
-
-            case R.id.side_navigation_menu_item6:
-                Intent search = new Intent(MemberActivity.this, SearchMainActivity.class);
-                MemberActivity.this.startActivity(search);
-
-                break;
-
-            default:
-                return;
-        }
-        // finish();
-    }
-}

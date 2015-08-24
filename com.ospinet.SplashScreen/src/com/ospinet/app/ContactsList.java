@@ -307,7 +307,7 @@ public class ContactsList extends Activity implements ISideNavigationCallback {
     View v = inflator.inflate(R.layout.menu1, null);
     ActionBar actionBar = getActionBar();
     actionBar.setDisplayHomeAsUpEnabled(false);
-    actionBar.setDisplayShowHomeEnabled (false);
+    actionBar.setDisplayShowHomeEnabled(false);
     actionBar.setDisplayShowCustomEnabled(true);
     actionBar.setDisplayShowTitleEnabled(false);
     actionBar.setCustomView(v);
@@ -315,6 +315,8 @@ public class ContactsList extends Activity implements ISideNavigationCallback {
     imgAdd.setVisibility(View.INVISIBLE);
     ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
     ImageButton imgSearch_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
+    ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
+    ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
     imgSearch_contacts.setOnClickListener(new OnClickListener() {
 	
 		@Override
@@ -338,6 +340,31 @@ public class ContactsList extends Activity implements ISideNavigationCallback {
             
 		}
 	});
+        imgfriend.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(ContactsList.this, Friend_requests.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                ContactsList.this.startActivity(intent);
+
+            }
+        });
+
+        imgbell.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(ContactsList.this, Notifications_Details.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                ContactsList.this.startActivity(intent);
+
+            }
+        });
 
 	ImageButton imgLogo = (ImageButton) v.findViewById(R.id.logo);
 	TextView txtLogoName = (TextView) v.findViewById(R.id.logoName);

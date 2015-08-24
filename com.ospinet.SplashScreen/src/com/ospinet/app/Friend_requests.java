@@ -55,6 +55,7 @@ public class Friend_requests extends Activity implements ISideNavigationCallback
 
         dialog = new ProgressDialog(Friend_requests.this);
         txtNoRec = (TextView) findViewById(R.id.txt_home_norec);
+        txtNoRec.setVisibility(View.INVISIBLE);
 
         //super.onCreate(savedInstanceState);
         req_notify = new ArrayList<Friend_request_notification>();
@@ -160,23 +161,6 @@ public class Friend_requests extends Activity implements ISideNavigationCallback
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            Confirm = (Button) findViewById(R.id.btnConfirm);
-            Ignore = (Button) findViewById(R.id.btnIgnore);
-
-            Confirm.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(Friend_requests.this, "CONFIRM", Toast.LENGTH_LONG).show();
-                }
-            });
-
-            Ignore.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(Friend_requests.this, "IGNORE", Toast.LENGTH_LONG).show();                }
-            });
         }
 
     }

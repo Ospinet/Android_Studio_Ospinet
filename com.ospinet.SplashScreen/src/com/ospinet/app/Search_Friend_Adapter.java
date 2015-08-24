@@ -94,7 +94,6 @@ public class Search_Friend_Adapter extends BaseAdapter {
             {
                 @Override
                 public void onClick (View view){
-                    //     new send_request().execute();
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                             mContext);
 
@@ -109,8 +108,9 @@ public class Search_Friend_Adapter extends BaseAdapter {
                                 public void onClick(DialogInterface dialog,int id) {
                                     // if this button is clicked, close
                                     // current activity
+                                    holder.Send_request.setImageResource(R.drawable.user_ok);
                                     to_userid = friend_search.get(position).getid();
-                               //     new send_request().execute();
+                                    new send_request().execute();
                                 }
                             })
                             .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -132,6 +132,32 @@ public class Search_Friend_Adapter extends BaseAdapter {
 
         }else{
             androidAQuery.id(holder.Send_request).image(R.drawable.user_ok);
+            holder.Send_request.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                            mContext);
+
+                    // set title
+                    alertDialogBuilder.setTitle("Information!");
+                    alertDialogBuilder.setIcon(R.drawable.applogo);
+                    // set dialog message
+                    alertDialogBuilder
+                            .setMessage("You already send friend request to " + friend_search.get(position).getfname() + " " + friend_search.get(position).getlname() + " and it is pending")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+                }
+            });
         }
 
 
@@ -156,7 +182,7 @@ public class Search_Friend_Adapter extends BaseAdapter {
         ImageButton Send_request;
         RoundedImageView txtProfile;
     }
-/*    public class send_request extends AsyncTask<String, String, String> {
+    public class send_request extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
@@ -164,8 +190,7 @@ public class Search_Friend_Adapter extends BaseAdapter {
             String SendRequest = "";
             try {
                 ArrayList<NameValuePair> send = new ArrayList<NameValuePair>();
-                SharedPreferences myPrefs = Search_Friend_Adapter.this
-                        getSharedPreferences("remember", Context.MODE_PRIVATE);
+                SharedPreferences myPrefs = mContext.getSharedPreferences("remember", Context.MODE_PRIVATE);
                 String userId = myPrefs.getString("userid", null);
                 send.add(new BasicNameValuePair("user_id",userId));
                 send.add(new BasicNameValuePair("to_userid",to_userid));
@@ -178,7 +203,7 @@ public class Search_Friend_Adapter extends BaseAdapter {
             }
             return SendRequest;
         }
-    } */
+    }
 
 
 }

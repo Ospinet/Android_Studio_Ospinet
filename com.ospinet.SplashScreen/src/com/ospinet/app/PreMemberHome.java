@@ -223,6 +223,8 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         try
         {
             Intent i = new Intent(PreMemberHome.this, ContactsList.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.putExtra("EXIT", true);
 
             PreMemberHome.this.startActivity(i);
 
@@ -285,6 +287,8 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         actionBar.setCustomView(v);
         ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
         ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+        ImageButton search_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
+        search_contacts.setVisibility(View.INVISIBLE);
         ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
         ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
 

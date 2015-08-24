@@ -592,12 +592,17 @@ new GetMemberDetails().execute();
     View v = inflator.inflate(R.layout.menu1, null);
     ActionBar actionBar = getActionBar();
     actionBar.setDisplayHomeAsUpEnabled(false);
-    actionBar.setDisplayShowHomeEnabled (false);
+    actionBar.setDisplayShowHomeEnabled(false);
     actionBar.setDisplayShowCustomEnabled(true);
     actionBar.setDisplayShowTitleEnabled(false);
     actionBar.setCustomView(v);
+		ImageButton search_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
+		search_contacts.setVisibility(View.INVISIBLE);
     ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
-    ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);	
+        imgAdd.setVisibility(View.INVISIBLE);
+        ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+        ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
+        ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
     imgAdd.setOnClickListener(new OnClickListener() {
 	
 		@Override
@@ -621,6 +626,31 @@ new GetMemberDetails().execute();
             
 		}
 	});
+        imgfriend.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(Member_Edit.this, Friend_requests.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                Member_Edit.this.startActivity(intent);
+
+            }
+        });
+
+        imgbell.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(Member_Edit.this, Notifications_Details.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                Member_Edit.this.startActivity(intent);
+
+            }
+        });
         TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
         friend_count.setVisibility(View.INVISIBLE);
 
