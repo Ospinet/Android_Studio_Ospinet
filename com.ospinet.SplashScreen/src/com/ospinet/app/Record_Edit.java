@@ -12,7 +12,6 @@ import com.androidquery.AQuery;
 import com.devspark.sidenavigation.ISideNavigationCallback;
 import com.devspark.sidenavigation.SideNavigationView;
 import com.devspark.sidenavigation.SideNavigationView.Mode;
-import com.ospinet.app.R;
 
 import android.app.ActionBar;
 import android.app.Activity;

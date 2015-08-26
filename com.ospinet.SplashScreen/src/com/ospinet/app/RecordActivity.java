@@ -49,7 +49,6 @@ import android.widget.Toast;
 import com.devspark.sidenavigation.ISideNavigationCallback;
 import com.devspark.sidenavigation.SideNavigationView;
 import com.devspark.sidenavigation.SideNavigationView.Mode;
-import com.ospinet.app.R;
 
 public class RecordActivity extends Activity implements ISideNavigationCallback {
 	EditText edtTitle, edtTags, edtDescription;

@@ -38,7 +38,6 @@ import com.androidquery.AQuery;
 import com.devspark.sidenavigation.ISideNavigationCallback;
 import com.devspark.sidenavigation.SideNavigationView;
 import com.devspark.sidenavigation.SideNavigationView.Mode;
-import com.ospinet.app.R;
 
 public class Record_View extends Activity implements ISideNavigationCallback {
 	String recId, memid;

@@ -1,210 +1,390 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#1BA0A2"
-    >
+    android:id="@+id/left_drawer"
+    android:layout_width="280dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/side_navigation_background"
+    android:fillViewport="true" >
 
-
-    <RelativeLayout
-        android:id="@+id/nav_header_container"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_alignParentTop="true"
-        android:background="#1BA0A2">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none" >
 
-        <com.ospinet.app.RoundedImageView
-            android:id="@+id/imageView_round"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:src="@drawable/doc"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/nav_header_container"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_alignParentTop="true"
+                android:background="#1BA0A2">
+
+                <com.ospinet.app.RoundedImageView
+                    android:id="@+id/imageView_round"
+                    android:layout_width="80dp"
+                    android:layout_height="110dp"
+                    android:src="@drawable/doc"
+                    android:layout_centerVertical="true"
+                    android:layout_alignLeft="@+id/linearLayout"
+                    android:layout_alignStart="@+id/linearLayout" />
 
 
-    <RelativeLayout
-        android:id="@+id/side_navigation_menu_item4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/nav_header_container"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/white">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:orientation="vertical"
+                        android:id="@+id/linearLayout">
 
-        <ImageView
-            android:id="@+id/Home_icon"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/home_32"
-            android:layout_centerVertical="true" />
+                    </LinearLayout>
 
-        <TextView
-            android:id="@+id/Home_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            android:paddingRight="40dp"
-            android:text="Home"
-            android:layout_toRightOf="@+id/Home_icon" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:shadowColor="@color/side_navigation_item_text_color"
+                    android:shadowDx="0"
+                    android:shadowDy="-1"
+                    android:shadowRadius="0.5"
+                    android:singleLine="true"
+                    android:text="USER NAME"
+                    android:textColor="@color/side_navigation_item_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_alignTop="@+id/linearLayout"
+                    android:layout_toRightOf="@+id/imageView_round"
+                    android:layout_toEndOf="@+id/imageView_round"
+                    android:layout_marginLeft="10dp" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:ellipsize="end"
+                    android:shadowColor="@color/side_navigation_item_text_color"
+                    android:shadowDx="0"
+                    android:shadowDy="-1"
+                    android:shadowRadius="0.5"
+                    android:singleLine="true"
+                    android:text="user@td.com"
+                    android:textColor="@color/side_navigation_item_text_color"
+                    android:textSize="14sp"
+                    android:layout_alignBottom="@+id/imageView_round"
+                    android:layout_toLeftOf="@+id/title"
+                    android:layout_toStartOf="@+id/title" />
+            </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/side_navigation_menu_item2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/side_navigation_menu_item4"
-        android:layout_marginTop="1dp"
-        android:background="@android:color/white">
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:background="#848484" />
 
-        <ImageView
-            android:id="@+id/Record_icon"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/records"
-            android:layout_centerVertical="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/Record_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            android:paddingRight="40dp"
-            android:text="Records"
-            android:layout_toRightOf="@+id/Record_icon"
-            android:layout_toEndOf="@+id/Record_icon" />
+                    <RelativeLayout
+                        android:id="@+id/rlHome"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:padding="4dp" >
 
-    </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/imgHome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:padding="8dp"
+                            android:src="@drawable/home_32" />
 
-    <RelativeLayout
-        android:id="@+id/side_navigation_menu_item5"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/side_navigation_menu_item2"
-        android:layout_marginTop="1dp"
-        android:background="@android:color/white">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@+id/imgHome"
+                            android:ellipsize="end"
+                            android:shadowColor="@color/side_navigation_item_text_color"
+                            android:shadowDx="0"
+                            android:shadowDy="-1"
+                            android:shadowRadius="0.5"
+                            android:singleLine="true"
+                            android:text="Home"
+                            android:textColor="@color/side_navigation_item_text_color"
+                            android:textSize="20dp" />
+                    </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/Share_icon"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/share_32"
-            android:layout_centerVertical="true" />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#848484" />
 
-        <TextView
-            android:id="@+id/Share_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            android:paddingRight="40dp"
-            android:text="Share"
-            android:layout_toRightOf="@+id/Share_icon"
-            android:layout_toEndOf="@+id/Share_icon" />
+                    <RelativeLayout
+                        android:id="@+id/rlUploads"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:padding="4dp" >
 
-    </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/imgUploads"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:padding="8dp"
+                            android:src="@drawable/settings_32" />
 
-    <RelativeLayout
-        android:id="@+id/side_navigation_menu_item6"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/side_navigation_menu_item5"
-        android:layout_marginTop="1dp"
-        android:background="@android:color/white">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@+id/imgUploads"
+                            android:ellipsize="end"
+                            android:shadowColor="@color/side_navigation_item_text_color"
+                            android:shadowDx="0"
+                            android:shadowDy="-1"
+                            android:shadowRadius="0.5"
+                            android:singleLine="true"
+                            android:text="Settings"
+                            android:textColor="@color/side_navigation_item_text_color"
+                            android:textSize="20dp" />
+                    </RelativeLayout>
+                </LinearLayout>
 
-        <ImageView
-            android:id="@+id/Search_icon"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/search_32"
-            android:layout_centerVertical="true" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#848484" />
 
-        <TextView
-            android:id="@+id/Search_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            android:paddingRight="40dp"
-            android:text="Search"
-            android:layout_toRightOf="@+id/Search_icon"
-            android:layout_toEndOf="@+id/Search_icon" />
+                <RelativeLayout
+                    android:id="@+id/side_navigation_menu_item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/side_navigation_menu_item4"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/side_navigation_background">
 
-    </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/Record_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/records"
+                        android:layout_centerVertical="true" />
 
-    <RelativeLayout
-        android:id="@+id/side_navigation_menu_item3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/side_navigation_menu_item6"
-        android:layout_marginTop="1dp"
-        android:background="@android:color/white">
+                    <TextView
+                        android:id="@+id/Record_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/side_navigation_item_text_color"
+                        android:gravity="center_vertical"
+                        android:paddingRight="40dp"
+                        android:text="Records"
+                        android:textSize="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/Record_icon"
+                        android:layout_toEndOf="@+id/Record_icon"
+                        android:layout_marginTop="8dp" />
 
-        <ImageView
-            android:id="@+id/Help_icon"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/help_32"
-            android:layout_centerVertical="true" />
+                    <TextView android:id="@+id/subTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save medical records for reference"
+                        android:textColor="@color/side_navigation_item_text_color"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignLeft="@+id/Record_title"
+                        android:layout_alignStart="@+id/Record_title"
+                        android:layout_below="@+id/Record_title"
+                        android:layout_marginTop="2dp"
+                        android:textSize="13dp" />
 
-        <TextView
-            android:id="@+id/Help_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            android:paddingRight="40dp"
-            android:text="Help"
-            android:layout_toRightOf="@+id/Help_icon"
-            android:layout_toEndOf="@+id/Help_icon" />
+                </RelativeLayout>
 
-    </RelativeLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#848484" />
 
-    <RelativeLayout
-        android:id="@+id/side_navigation_menu_item1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/side_navigation_menu_item3"
-        android:layout_marginTop="1dp"
-        android:background="@android:color/white">
+                <RelativeLayout
+                    android:id="@+id/side_navigation_menu_item5"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/side_navigation_menu_item2"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/side_navigation_background">
 
-        <ImageView
-            android:id="@+id/Logout_icon"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/logout_32"
-            android:layout_centerVertical="true" />
+                    <ImageView
+                        android:id="@+id/Share_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/share_32"
+                        android:layout_centerVertical="true" />
 
-        <TextView
-            android:id="@+id/Logout_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            android:paddingRight="40dp"
-            android:text="Logout"
-            android:layout_toRightOf="@+id/Logout_icon"
-            android:layout_toEndOf="@+id/Logout_icon" />
+                    <TextView
+                        android:id="@+id/Share_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/side_navigation_item_text_color"
+                        android:gravity="center_vertical"
+                        android:paddingRight="40dp"
+                        android:text="Share"
+                        android:layout_toRightOf="@+id/Share_icon"
+                        android:layout_toEndOf="@+id/Share_icon"
+                        android:textSize="20dp"
+                        android:layout_marginTop="12dp"/>
 
-    </RelativeLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#848484" />
+
+                <RelativeLayout
+                    android:id="@+id/side_navigation_menu_item6"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/side_navigation_menu_item5"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/side_navigation_background">
+
+                    <ImageView
+                        android:id="@+id/Search_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/search_32"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:id="@+id/Search_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/side_navigation_item_text_color"
+                        android:gravity="center_vertical"
+                        android:paddingRight="40dp"
+                        android:text="Search"
+                        android:layout_toRightOf="@+id/Search_icon"
+                        android:layout_toEndOf="@+id/Search_icon"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#848484" />
+
+                <RelativeLayout
+                    android:id="@+id/side_navigation_menu_item3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/side_navigation_menu_item6"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/side_navigation_background">
+
+                    <ImageView
+                        android:id="@+id/Help_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/help_32"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:id="@+id/Help_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/side_navigation_item_text_color"
+                        android:gravity="center_vertical"
+                        android:paddingRight="40dp"
+                        android:text="Help"
+                        android:layout_toRightOf="@+id/Help_icon"
+                        android:layout_toEndOf="@+id/Help_icon"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#848484" />
+
+                <RelativeLayout
+                    android:id="@+id/side_navigation_menu_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/side_navigation_menu_item3"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/side_navigation_background">
+
+                    <ImageView
+                        android:id="@+id/Logout_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/logout_32"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:id="@+id/Logout_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/side_navigation_item_text_color"
+                        android:gravity="center_vertical"
+                        android:paddingRight="40dp"
+                        android:text="Logout"
+                        android:layout_toRightOf="@+id/Logout_icon"
+                        android:layout_toEndOf="@+id/Logout_icon"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#848484" />
+
+                <!-- All your menu options goes here -->
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
+

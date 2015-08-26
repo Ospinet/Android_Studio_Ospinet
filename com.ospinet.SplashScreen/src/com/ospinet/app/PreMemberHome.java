@@ -13,15 +13,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.SlidingDrawer;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.devspark.sidenavigation.ISideNavigationCallback;
@@ -31,6 +34,7 @@ import com.devspark.sidenavigation.SideNavigationView.Mode;
 public class PreMemberHome extends Activity implements ISideNavigationCallback {
     private SideNavigationView sideNavigationView;
     ProgressDialog dialog;
+    private SlidingPaneLayout mSlidingLayout;
 
     TextView txtname;
     ImageView imageView_round;
@@ -72,6 +76,7 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         sideNavigationView.setMenuItems(R.menu.side_navigation_menu);
         sideNavigationView.setMenuClickCallback(this);
         sideNavigationView.setMode(Mode.LEFT);
+
     }
 
     public class GetFriendRequestCount extends AsyncTask<String, String, String> {
@@ -277,6 +282,28 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
 
         }
     }
+/*    private void side_menu(){
+        LayoutInflater inflator = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflator.inflate(R.layout.drawer, null);
+        RelativeLayout Home = (RelativeLayout) v.findViewById(R.id.rlHome);
+        RelativeLayout Records = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item2);
+        RelativeLayout share = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item5);
+        RelativeLayout Search = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item6);
+        RelativeLayout Help = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item3);
+        RelativeLayout Logout = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item1);
+
+        Home.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Toast.makeText(PreMemberHome.this, "Home clicked!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+    } */
+
     private void showActionBar() {
         LayoutInflater inflator = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
