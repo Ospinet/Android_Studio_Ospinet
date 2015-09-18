@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ospinet.app"
-    android:versionCode="6"
+    android:versionCode="7"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="22" />
 <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -46,6 +46,7 @@
             <activity android:name="com.ospinet.app.ContactsList" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.RecordsList" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.Search_Friends" android:screenOrientation="portrait" ></activity>
+            <activity android:name="com.ospinet.app.SlidingActivity" android:screenOrientation="portrait" ></activity>
             <activity android:name=".SearchMainActivity" android:screenOrientation="portrait" ></activity>
             <activity android:name=".ShareMainActivity" android:screenOrientation="portrait" ></activity>
             <activity android:name="com.ospinet.app.login_2" android:screenOrientation="portrait" android:noHistory="true">

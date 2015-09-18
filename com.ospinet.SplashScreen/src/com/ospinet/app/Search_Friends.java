@@ -2,8 +2,10 @@ package com.ospinet.app;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -11,8 +13,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -22,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidquery.AQuery;
 import com.devspark.sidenavigation.ISideNavigationCallback;
 import com.devspark.sidenavigation.SideNavigationView;
 
@@ -34,6 +39,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Search_Friends extends Activity implements ISideNavigationCallback {
+    public  String to_userid;
+
     private SideNavigationView sideNavigationView;
     ProgressDialog dialog;
     ListView FriendsList;
@@ -83,10 +90,10 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
 
         @Override
         protected void onPreExecute() {
-                super.onPreExecute();
-                dialog.setMessage("Please Wait..");
-                dialog.show();
-                dialog.setCancelable(false);
+            super.onPreExecute();
+            dialog.setMessage("Please Wait..");
+            dialog.show();
+            dialog.setCancelable(false);
         }
 
         @Override
@@ -131,6 +138,8 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
                 int flag=0;
                 JSONArray jsonMainNode = jsonResponse.optJSONArray("result");
                 friend_search.clear();
+                if(jsonMainNode != null)
+                {
                     for (int i = 0; i < jsonMainNode.length(); i++) {
                         JSONArray jArray = jsonMainNode.getJSONArray(i);
                         for (int j = 0; j < jArray.length(); j++) {
@@ -169,11 +178,16 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
                             FriendsList.setVisibility(View.VISIBLE);
                         }
                     }
-
+                }
+                else
+                {
+                    txtNoRec.setVisibility(View.VISIBLE);
+                    FriendsList.setVisibility(View.GONE);
+                }
                 rad = new Search_Friend_Adapter(Search_Friends.this,
                         friend_search);
 
-                    FriendsList.setAdapter(rad);
+                FriendsList.setAdapter(rad);
 
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
@@ -273,4 +287,214 @@ public class Search_Friends extends Activity implements ISideNavigationCallback 
         }
         // finish();
     }
+
+
+
+    public class Search_Friend_Adapter extends BaseAdapter {
+        private ArrayList<Friend_search> friend_search;
+        private LayoutInflater mInflater;
+        private Context mContext;
+
+        public Search_Friend_Adapter(Context context, ArrayList<Friend_search> results) {
+            friend_search = results;
+            mInflater = LayoutInflater.from(context);
+            mContext = context;
+        }
+
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return friend_search.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return friend_search.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return position;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            // TODO Auto-generated method stub
+            final ViewHolder holder;
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.search_friends_row, null);
+
+                holder = new ViewHolder();
+
+                holder.txtId = (TextView) convertView.findViewById(R.id.txtId);
+                holder.txtFname = (TextView) convertView.findViewById(R.id.txtFname);
+                holder.txtLname = (TextView) convertView.findViewById(R.id.txtLname);
+                holder.txtType = (TextView) convertView.findViewById(R.id.txtType);
+                holder.txtEmail = (TextView) convertView.findViewById(R.id.txtEmail);
+                holder.txtNs = (TextView) convertView.findViewById(R.id.txtNs);
+                holder.txtLogin_status = (TextView) convertView.findViewById(R.id.txtLogin_status);
+                holder.txtUid = (TextView) convertView.findViewById(R.id.txtUid);
+                holder.txtProfile = (RoundedImageView) convertView.findViewById(R.id.imgProfile);
+                holder.Send_request =(ImageButton) convertView.findViewById(R.id.Send_request);
+
+                convertView.setTag(holder);
+            } else
+            {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            holder.txtId.setText(friend_search.get(position).getid()+"");
+            holder.txtFname.setText(friend_search.get(position).getfname());
+            holder.txtLname.setText(friend_search.get(position).getlname());
+            holder.txtType.setText(friend_search.get(position).gettype());
+            holder.txtEmail.setText(friend_search.get(position).getemail());
+            holder.txtNs.setText(friend_search.get(position).getns());
+            holder.txtLogin_status.setText(friend_search.get(position).getlogin_status());
+            holder.txtUid.setText(friend_search.get(position).getuid());
+            //  holder.txtProfile.setText(req_notify.get(position).getprofile());
+            AQuery androidAQuery = new AQuery(
+                    mContext);
+
+            holder.Send_request.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick (View view){
+                    if(friend_search.get(position).getsend_request() == null || friend_search.get(position).getsend_request().equals("null"))
+                    {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                mContext);
+
+                        // set title
+                        alertDialogBuilder.setTitle("Confirmation!");
+                        alertDialogBuilder.setIcon(R.drawable.applogo);
+                        // set dialog message
+                        alertDialogBuilder
+                                .setMessage("You are sending friend request to " + friend_search.get(position).getfname() + " " + friend_search.get(position).getlname())
+                                .setCancelable(false)
+                                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        // if this button is clicked, close
+                                        // current activity
+                                        holder.Send_request.setImageResource(R.drawable.user_ok);
+                                        to_userid = friend_search.get(position).getid();
+                                        new send_request().execute();
+                                    /*notifyDataSetChanged();*/
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // if this button is clicked, just close
+                                        // the dialog box and do nothing
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        // create alert dialog
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+
+                        // show it
+                        alertDialog.show();
+                    }
+                }
+            });
+
+
+            if(friend_search.get(position).getsend_request() == null || friend_search.get(position).getsend_request().equals("null")){
+                androidAQuery.id(holder.Send_request).image(R.drawable.add_user);
+
+            }else{
+                androidAQuery.id(holder.Send_request).image(R.drawable.user_ok);
+             /*   holder.Send_request.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                mContext);
+
+                        // set title
+                        alertDialogBuilder.setTitle("Information!");
+                        alertDialogBuilder.setIcon(R.drawable.applogo);
+                        // set dialog message
+                        alertDialogBuilder
+                                .setMessage("You already send friend request to " + friend_search.get(position).getfname() + " " + friend_search.get(position).getlname() + " and it is pending")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        // create alert dialog
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+
+                        // show it
+                        alertDialog.show();
+                    }
+                });
+    */
+            }
+
+
+            if(friend_search.get(position).getprofile() == null || friend_search.get(position).getprofile().equals("null") || friend_search.get(position).getprofile().equals("")){
+                androidAQuery.id(holder.txtProfile).image(
+                        "http://ospinet.com/assets/images/people/250/default_avatar_250x250.png", false, false,0, 0);   //"http://ospinet.com/assets/images/people/250/default_avatar_250x250.png"
+            }else{
+                androidAQuery.id(holder.txtProfile).image(
+                        "http://ospinet.com/profile_pic/member_pic_250/" + friend_search.get(position).getprofile() +"_250." + friend_search.get(position).gettype(), false, false,0, 0);   //"http://ospinet.com/profile_pic/member_pic_250/" + profile_image;
+            }
+            return convertView;
+        }
+        class ViewHolder {
+            TextView txtId;
+            TextView txtFname;
+            TextView txtLname;
+            TextView txtType;
+            TextView txtEmail;
+            TextView txtNs;
+            TextView txtLogin_status;
+            TextView txtUid;
+            ImageButton Send_request;
+            RoundedImageView txtProfile;
+        }
+    }
+
+    public class send_request extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            dialog.setMessage("Please Wait..");
+            dialog.show();
+            dialog.setCancelable(false);
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            // TODO Auto-generated method stub
+            String SendRequest = "";
+            try {
+                ArrayList<NameValuePair> send = new ArrayList<NameValuePair>();
+                SharedPreferences myPrefs = Search_Friends.this.getSharedPreferences("remember", Context.MODE_PRIVATE);
+                String userId = myPrefs.getString("userid", null);
+                send.add(new BasicNameValuePair("user_id",userId));
+                send.add(new BasicNameValuePair("to_userid",to_userid));
+                String response = CustomHttpClient
+                        .executeHttpPost("http://ospinet.com/app_ws/android_app_fun/send_friend_request",
+                                send);
+                SendRequest = response.toString();
+            } catch (Exception io) {
+
+            }
+            return SendRequest;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            new search_friends().execute();
+
+        }
+    }
+
 }
+

@@ -15,6 +15,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
@@ -27,15 +28,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
-import com.devspark.sidenavigation.ISideNavigationCallback;
-import com.devspark.sidenavigation.SideNavigationView;
-import com.devspark.sidenavigation.SideNavigationView.Mode;
 
-public class PreMemberHome extends Activity implements ISideNavigationCallback {
-    private SideNavigationView sideNavigationView;
+public class PreMemberHome extends Activity {
     ProgressDialog dialog;
     private SlidingPaneLayout mSlidingLayout;
 
+    ImageView appImage;
+    SlidingPaneLayout mSlidingPanel;
     TextView txtname;
     ImageView imageView_round;
     @Override
@@ -45,11 +44,16 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 
-        setContentView(R.layout.home_new);
+        setContentView(R.layout.activity_sliding);
 
         dialog = new ProgressDialog(PreMemberHome.this);
         txtname = (TextView) findViewById(R.id.txtName);
         imageView_round = (ImageView) findViewById(R.id.imageView_round);
+        mSlidingPanel = (SlidingPaneLayout) findViewById(R.id.SlidingPanel);
+        appImage = (ImageView)findViewById(android.R.id.home);
+        mSlidingPanel.setPanelSlideListener(panelListener);
+        mSlidingPanel.setParallaxDistance(200);
+
         SharedPreferences myPrefs = PreMemberHome.this
                 .getSharedPreferences("remember", MODE_PRIVATE);
         String fname = myPrefs.getString("fname", null);
@@ -72,11 +76,56 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         new GetNotificationsCount().execute();
         new GetFriendRequestCount().execute();
 
-        sideNavigationView = (SideNavigationView) findViewById(R.id.side_navigation_view);
-        sideNavigationView.setMenuItems(R.menu.side_navigation_menu);
-        sideNavigationView.setMenuClickCallback(this);
-        sideNavigationView.setMode(Mode.LEFT);
+        getActionBar().setIcon(getResources().getDrawable(R.drawable.menu_icon));
+        getActionBar().setDisplayShowHomeEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+        side_menu();
 
+    }
+
+    SlidingPaneLayout.PanelSlideListener panelListener = new SlidingPaneLayout.PanelSlideListener(){
+
+        @Override
+        public void onPanelClosed(View arg0) {
+            // TODO Auto-genxxerated method stub
+            // getActionBar().setTitle(getString(R.string.app_name));
+                appImage.animate().rotation(0);
+        }
+
+        @Override
+        public void onPanelOpened(View arg0) {
+            // TODO Auto-generated method stub
+            getActionBar().setTitle("OSPINET");
+                appImage.animate().rotation(90);
+        }
+
+        @Override
+        public void onPanelSlide(View arg0, float arg1) {
+            // TODO Auto-generated method stub
+
+        }
+    };
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO Auto-generated method stub
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if(mSlidingPanel.isOpen()){
+                    appImage.animate().rotation(0);
+                    mSlidingPanel.closePane();
+                    getActionBar().setTitle(getString(R.string.app_name));
+                }
+                else{
+                    appImage.animate().rotation(90);
+                    mSlidingPanel.openPane();
+                    getActionBar().setTitle("OSPINET");
+                }
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public class GetFriendRequestCount extends AsyncTask<String, String, String> {
@@ -101,7 +150,7 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
             return Friend_Request_count;
         }
         protected void onPostExecute(String Friend_Request_count) {
-            if(!Friend_Request_count.replace("\n","").equals("0")){
+            if(!Friend_Request_count.replace("\n"," ").equals("0")){
                 TextView friend_count = (TextView) findViewById(R.id.actionbar_notifcation_textview);
                 friend_count.setVisibility(View.VISIBLE);
                 friend_count.setText(Friend_Request_count);
@@ -138,54 +187,6 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
                 notification_count.setText(Count);
             }
         }
-    }
-    @Override
-    public void onSideNavigationItemClick(int itemId) {
-        switch(itemId)
-        {
-            case R.id.side_navigation_menu_item1:
-                Intent i = new Intent(PreMemberHome.this, LoginActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.putExtra("EXIT", true);
-
-                PreMemberHome.this.startActivity(i);
-
-                break;
-
-            case R.id.side_navigation_menu_item2:
-                Intent records = new Intent(PreMemberHome.this, Member_Home.class);
-                PreMemberHome.this.startActivity(records);
-
-                break;
-
-            case R.id.side_navigation_menu_item3:
-                Intent help = new Intent(PreMemberHome.this, com.ospinet.app.help.class);
-                PreMemberHome.this.startActivity(help);
-
-                break;
-
-            case R.id.side_navigation_menu_item4:
-                Intent home = new Intent(PreMemberHome.this, PreMemberHome.class);
-                PreMemberHome.this.startActivity(home);
-
-                break;
-
-            case R.id.side_navigation_menu_item5:
-                Intent share = new Intent(PreMemberHome.this, ShareMainActivity.class);
-                PreMemberHome.this.startActivity(share);
-
-                break;
-
-            case R.id.side_navigation_menu_item6:
-                Intent search = new Intent(PreMemberHome.this, SearchMainActivity.class);
-                PreMemberHome.this.startActivity(search);
-
-                break;
-
-            default:
-                return;
-        }
-        // finish();
     }
     @Override
     public void onBackPressed() {
@@ -282,27 +283,96 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
 
         }
     }
-/*    private void side_menu(){
-        LayoutInflater inflator = (LayoutInflater) this
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflator.inflate(R.layout.drawer, null);
-        RelativeLayout Home = (RelativeLayout) v.findViewById(R.id.rlHome);
-        RelativeLayout Records = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item2);
-        RelativeLayout share = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item5);
-        RelativeLayout Search = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item6);
-        RelativeLayout Help = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item3);
-        RelativeLayout Logout = (RelativeLayout) v.findViewById(R.id.side_navigation_menu_item1);
+    public void side_menu(){
+        findViewById(R.id.side_navigation_menu_item8).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, PreMemberHome.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
 
-        Home.setOnClickListener(new OnClickListener() {
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+        findViewById(R.id.side_navigation_menu_item7).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, Profile_view.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(PreMemberHome.this, "Home clicked!", Toast.LENGTH_LONG).show();
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+        findViewById(R.id.side_navigation_menu_item7).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, Profile_view.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
 
-            }
-        });
-    } */
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+        findViewById(R.id.side_navigation_menu_item2).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, RecordsList.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
+
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+        findViewById(R.id.side_navigation_menu_item5).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, ShareMainActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
+
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+        findViewById(R.id.side_navigation_menu_item6).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, SearchMainActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
+
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+        findViewById(R.id.side_navigation_menu_item3).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, help.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
+
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+        findViewById(R.id.side_navigation_menu_item1).setOnClickListener(
+                new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PreMemberHome.this, LoginActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("EXIT", true);
+
+                        PreMemberHome.this.startActivity(i);
+                    }
+                });
+    }
 
     private void showActionBar() {
         LayoutInflater inflator = (LayoutInflater) this
@@ -310,12 +380,13 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
         View v = inflator.inflate(R.layout.menu1, null);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setDisplayShowHomeEnabled (false);
+        actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setCustomView(v);
         ImageButton imgAdd = (ImageButton) v.findViewById(R.id.add); //it's important to use your actionbar view that you inflated before
-        ImageButton imgMenu = (ImageButton) v.findViewById(R.id.options);
+        ImageButton menu = (ImageButton) v.findViewById(R.id.options);
+        menu.setVisibility(View.INVISIBLE);
         ImageButton search_contacts = (ImageButton) v.findViewById(R.id.search_contacts);
         search_contacts.setVisibility(View.INVISIBLE);
         ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
@@ -362,16 +433,6 @@ public class PreMemberHome extends Activity implements ISideNavigationCallback {
                 intent.putExtra("EXIT", true);
                 PreMemberHome.this.startActivity(intent);
 
-            }
-        });
-        imgMenu.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                sideNavigationView.toggleMenu();
-                RelativeLayout rel = (RelativeLayout) findViewById(R.id.rel);
-                rel.bringChildToFront(sideNavigationView);
             }
         });
 

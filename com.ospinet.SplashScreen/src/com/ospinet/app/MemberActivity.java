@@ -68,26 +68,27 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
         sideNavigationView.setMenuClickCallback(this);
         sideNavigationView.setMode(Mode.LEFT);
 
-		memid = getIntent().getStringExtra("member_id");
-		dialogP = new ProgressDialog(MemberActivity.this);
-		edtFname = (EditText) findViewById(R.id.edtFname);
-		edtLname = (EditText) findViewById(R.id.edtlname);
-		edtEmail = (EditText) findViewById(R.id.edtEmail);
-		edtAge = (EditText) findViewById(R.id.edtAge);
+		memid 		= getIntent().getStringExtra("member_id");
+		dialogP  	= new ProgressDialog(MemberActivity.this);
 
-		btnAdd = (Button) findViewById(R.id.btnAdd);
-		btnCancel = (Button) findViewById(R.id.btnCancel);
-		btnMale = (ImageView) findViewById(R.id.btnMale);
-		btnFemale = (ImageView) findViewById(R.id.btnFemale);
-		btnDob = (Button) findViewById(R.id.btnDOB);
-		btnAge = (Button) findViewById(R.id.btnAge);
-		btnUnborn = (Button) findViewById(R.id.btnUnborn);
+		edtFname 	= (EditText) findViewById(R.id.edtFname);
+		edtLname 	= (EditText) findViewById(R.id.edtlname);
+		edtEmail 	= (EditText) findViewById(R.id.edtEmail);
+		edtAge 	 	= (EditText) findViewById(R.id.edtAge);
 
-		spYear = (Spinner) findViewById(R.id.spinYear);
-		spMonth = (Spinner) findViewById(R.id.spinMonth);
-		spDay = (Spinner) findViewById(R.id.spinDay);
+		btnAdd 		= (Button) findViewById(R.id.btnAdd);
+		btnCancel 	= (Button) findViewById(R.id.btnCancel);
+		btnMale 	= (ImageView) findViewById(R.id.btnMale);
+		btnFemale 	= (ImageView) findViewById(R.id.btnFemale);
+		btnDob 		= (Button) findViewById(R.id.btnDOB);
+		btnAge 		= (Button) findViewById(R.id.btnAge);
+		btnUnborn 	= (Button) findViewById(R.id.btnUnborn);
+
+		spYear 		= (Spinner) findViewById(R.id.spinYear);
+		spMonth 	= (Spinner) findViewById(R.id.spinMonth);
+		spDay 		= (Spinner) findViewById(R.id.spinDay);
 ///////////////////// get member details here
-		
+
 		spYear.setVisibility(View.INVISIBLE);
 		spMonth.setVisibility(View.INVISIBLE);
 		spDay.setVisibility(View.INVISIBLE);
@@ -99,7 +100,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 		adapYear.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spMonth.setEnabled(false);
 		spDay.setEnabled(false);
-		
+
 		spYear.setAdapter(adapYear);
 		spYear.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -181,7 +182,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 						@Override
 						public void onNothingSelected(AdapterView<?> arg0) {
 							// TODO Auto-generated method stub
-							
+
 						}
 					});
 									}
@@ -207,7 +208,7 @@ public class MemberActivity extends Activity implements ISideNavigationCallback 
 		});
 new GetMemberDetails().execute();
 	}
-	
+
 	public int CalculateLeapYear(String yr) {
 		int res = 0;
 		try {
@@ -312,7 +313,7 @@ new GetMemberDetails().execute();
 		i.putExtra("EXIT", true);
 		this.startActivity(i);
 		//finish();
-		
+
 	}
 
 	public class UpdateMember extends AsyncTask<String, String, String> {
@@ -352,7 +353,7 @@ new GetMemberDetails().execute();
 				{
 					age = edtAge.getText().toString();
 				}
-				
+
 				SharedPreferences myPrefs = MemberActivity.this
 						.getSharedPreferences("remember", MODE_PRIVATE);
 				String userid = myPrefs.getString("userid", null);
@@ -364,13 +365,10 @@ new GetMemberDetails().execute();
 				loginParam.add(new BasicNameValuePair("gender", gender));
 				loginParam.add(new BasicNameValuePair("email", email));
 				loginParam.add(new BasicNameValuePair("age", age));
-				loginParam
-						.add(new BasicNameValuePair("birth_info", birth_info));
+				loginParam.add(new BasicNameValuePair("birth_info", birth_info));
 				loginParam.add(new BasicNameValuePair("birth_day", day));
-				loginParam
-						.add(new BasicNameValuePair("birth_month", month));
-				loginParam
-						.add(new BasicNameValuePair("birth_year", year));
+				loginParam.add(new BasicNameValuePair("birth_month", month));
+				loginParam						.add(new BasicNameValuePair("birth_year", year));
 
 				String response = CustomHttpClient.executeHttpPost(
 						"http://ospinet.com/app_ws/android_app_fun/add_member",
@@ -399,7 +397,7 @@ new GetMemberDetails().execute();
 							Member_Home.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					i.putExtra("EXIT", true);
-					
+
 					MemberActivity.this.startActivity(i);
 					finish();
 				} else {
@@ -513,7 +511,6 @@ new GetMemberDetails().execute();
 			// TODO Auto-generated method stub
 			String retstring = "";
 			try {
-
 				String response = CustomHttpClient
 						.executeHttpGet("http://ospinet.com/app_ws/android_app_fun/get_members_details?member_id="
 								+ memid);
@@ -536,6 +533,8 @@ new GetMemberDetails().execute();
 
 				JSONArray jsonMainNode = jsonResponse
 						.optJSONArray("member_detail");
+			if(jsonMainNode != null)
+			{
 				for (int i = 0; i < jsonMainNode.length(); i++) {
 					JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
 					id = jsonChildNode.optString("id");
@@ -552,23 +551,24 @@ new GetMemberDetails().execute();
 					edtAge.setText(age);
 					if (gen.toLowerCase().equals("male")) {
 						btnMale.setBackgroundResource(R.drawable.malepressed);
-                        //btnMale.setTextColor(Color.WHITE);
+						//btnMale.setTextColor(Color.WHITE);
 						btnFemale.setBackgroundResource(R.drawable.femaleselector);
-                        //btnFemale.setTextColor(Color.WHITE);
+						//btnFemale.setTextColor(Color.WHITE);
 						gender = "male";
 
 					} else {
 						btnFemale.setBackgroundResource(R.drawable.femalepressed);
-                    //    btnFemale.setTextColor(Color.WHITE);
+						//    btnFemale.setTextColor(Color.WHITE);
 						btnMale.setBackgroundResource(R.drawable.maleselector);
-                      //  btnMale.setTextColor(Color.WHITE);
+						//  btnMale.setTextColor(Color.WHITE);
 						gender = "female";
 					}
 					birth_info = "age";
 					btnAge.setBackgroundResource(R.drawable.button_custom_two);
-                    btnAge.setTextColor(Color.WHITE);
+					btnAge.setTextColor(Color.WHITE);
 					edtAge.setVisibility(View.VISIBLE);
 				}
+			}
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -602,7 +602,7 @@ new GetMemberDetails().execute();
         ImageButton imgbell = (ImageButton) v.findViewById(R.id.notifications);
         ImageButton imgfriend = (ImageButton) v.findViewById(R.id.friendrequest);
     imgAdd.setOnClickListener(new OnClickListener() {
-	
+
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
@@ -610,18 +610,18 @@ new GetMemberDetails().execute();
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			intent.putExtra("EXIT", true);
 			MemberActivity.this.startActivity(intent);
-            
+
 		}
 	});
     imgMenu.setOnClickListener(new OnClickListener() {
-    	
+
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			 sideNavigationView.toggleMenu();
 			 RelativeLayout rel = (RelativeLayout) findViewById(R.id.rel);
              rel.bringChildToFront(sideNavigationView);
-            
+
 		}
 	});
         imgfriend.setOnClickListener(new OnClickListener() {
@@ -657,9 +657,9 @@ new GetMemberDetails().execute();
 
 	ImageButton imgLogo = (ImageButton) v.findViewById(R.id.logo);
 	TextView txtLogoName = (TextView) v.findViewById(R.id.logoName);
-	
+
 	imgLogo.setOnClickListener(new OnClickListener() {
-		
+
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
@@ -669,7 +669,7 @@ new GetMemberDetails().execute();
 		}
 	});
 	txtLogoName.setOnClickListener(new OnClickListener() {
-		
+
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
@@ -678,12 +678,12 @@ new GetMemberDetails().execute();
 			startActivity(i);
 		}
 	});
-	
-	
-	
+
+
+
 	}
-	
-	
+
+
 	@Override
     public void onSideNavigationItemClick(int itemId) {
         switch(itemId)

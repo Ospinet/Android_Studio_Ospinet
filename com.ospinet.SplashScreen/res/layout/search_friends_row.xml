@@ -132,11 +132,12 @@
 
         <ImageButton
             android:id="@+id/Send_request"
-            android:layout_width="25dp"
-            android:layout_height="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="5dp"
+            android:background="#ffffff" />
 
 </RelativeLayout>
